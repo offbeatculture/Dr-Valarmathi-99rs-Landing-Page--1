@@ -7,7 +7,7 @@
 @layer base {
   :root {
     /* Brand Colors - Exact Palette */
-    --background: 48 33% 96%; /* #FAF8EE cream */
+    --background:["#F8F6E9"]; /* #FAF8EE cream */
     --foreground: 24 13% 17%; /* #2F2A26 dark text */
 
     --card: 48 33% 96%;
@@ -74,7 +74,7 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: [#F8F6E9];
     --foreground: 210 40% 98%;
 
     --card: 222.2 84% 4.9%;
@@ -140,7 +140,7 @@
   }
 
   .hero-cta .cta-text {
-    @apply px-7 py-3 text-primary;
+    @apply px-7 py-3 text-white;
   }
 
   .hero-cta .cta-icon {

@@ -3,67 +3,63 @@ import heroImage from "@/assets/hero-wellness.jpg";
 
 export const HeroSection = () => {
   return (
-    <section className="relative bg-cream px-4 py-10 md:py-14 lg:py-20 overflow-hidden">
+    <section className="relative bg-[#F8F6E8] px-4 py-10 md:py-14 lg:py-20 overflow-hidden">
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           
-          {/* === MOBILE VERSION (stacked) === */}
-          <div className="order-1 lg:hidden space-y-6 fade-in text-center">
-            {/* Heading */}
-            <h1 className="font-lora text-[#312B24] text-[32px] leading-tight">
-              From <span className="font-medium italic">Chaotic Overthinker</span><br />
-              To <span className="font-medium italic">Peaceful Powerhouse</span>
-            </h1>
+          
+{/* === MOBILE VERSION (stacked) === */}
+<div className="order-1 lg:hidden space-y-6 fade-in text-center">
+  {/* Heading */}
+<h1 className="font-lora text-[#312B24] text-[25px] leading-tight font-medium italic">
+  From Chaotic Overthinker<br />
+  To Peaceful Powerhouse
+</h1>
 
-            {/* Subheadline with dots in one line */}
-            <h2 className="text-sm font-bold tracking-tight whitespace-nowrap">
-              <span className="text-[#1E3A8A]">Heal your gut</span> •{" "}
-              <span className="text-[#B91C1C]">Calm your mind</span> •{" "}
-              <span className="text-[#14532D]">Reset your energy</span>
-            </h2>
-          </div>
 
-          {/* Image (mobile centered, desktop right column) */}
-          <div className="order-2 lg:order-2 fade-in">
-            <div className="mx-auto w-full max-w-[420px] sm:max-w-none aspect-[3/4] sm:aspect-[3/4] md:aspect-[4/5] max-h-[320px] sm:max-h-none rounded-3xl overflow-hidden shadow-wellness">
-              <img
-                src={heroImage}
-                alt="Peaceful woman meditating in a serene, light-filled space representing energy transformation"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+  {/* Subheadline with dots in one line */}
+  <h2 className="text-sm font-bold tracking-tight whitespace-nowrap">
+    <span className="text-[#B91C1C]">Calm your mind</span> •{" "}
+    <span className="text-[#1E3A8A]">Heal your gut</span> •{" "}
+    <span className="text-[#14532D]">Reset your energy</span>
+  </h2>
 
-          {/* Mobile details + CTA */}
-          <div className="order-3 lg:hidden space-y-4 fade-in text-center">
-            <p className="text-base text-wellness-text/80 leading-relaxed">
-              2-Day Energy Reset Challenge with Dr. Valarmathi Srinivasan —{" "}
-              <span className="inline-block font-bold text-primary-dark bg-[#FDE68A] px-3 py-1 rounded-lg animate-pulse-slow">
-                Join today for just ₹99
-              </span>
-            </p>
+  {/* CTA Button — moved up here */}
+<button className="group inline-flex items-center justify-between w-full sm:w-auto bg-[#F8F6E8] border border-[#E0DED2] rounded-full px-4 py-2 shadow-sm hover:shadow-md transition-all duration-300">
+  <span className="text-sm font-bold text-[#312B24]">Book My Spot Now</span>
+  <span className="ml-3 flex items-center justify-center w-9 h-9 rounded-full bg-[#175B53] group-hover:bg-[#134741] transition-colors duration-300">
+    <ArrowRight className="w-4 h-4 text-white" />
+  </span>
+</button>
+</div>
 
-            
+{/* Image (mobile centered, desktop right column) */}
+<div className="order-2 lg:order-2 fade-in">
+  <div className="mx-auto w-full max-w-[420px] sm:max-w-none aspect-[3/4] sm:aspect-[3/4] md:aspect-[4/5] max-h-[320px] sm:max-h-none rounded-3xl overflow-hidden shadow-wellness">
+    <img
+      src={heroImage}
+      alt="Peaceful woman meditating in a serene, light-filled space representing energy transformation"
+      className="w-full h-full object-cover"
+    />
+  </div>
+</div>
 
-            <button className="hero-cta group w-full sm:w-auto bg-[#175B53] hover:bg-[#134741] transition-colors duration-300 mx-auto">
-              <div className="cta-content">
-                <span className="cta-text">Book Your Spot Now</span>
-                <div className="cta-icon">
-                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                </div>
-              </div>
-            </button>
+{/* Mobile details (after image now) */}
+<div className="order-3 lg:hidden space-y-2 fade-in text-center">
+  <p className="text-medium text-wellness-text/80 leading-relaxed">
+    2-Day Energy Reset Challenge with Dr. Valarmathi Srinivasan —{" "}
+  </p>
 
-            <div className="flex justify-center items-center gap-2 text-sm text-wellness-text font-bold">
-              <Calendar className="w-4 h-4 text-primary-dark" />
-              <span>Sunday, 21 September — 11:00 AM IST</span>
-            </div>
-            
-          </div>
+  <div className="flex justify-center items-center gap-2 text-sm text-wellness-text font-bold">
+    <Calendar className="w-4 h-4 text-primary-dark" />
+    <span className="font-bold">Sunday, 21 September — 11:00 AM IST</span>
+  </div>
+</div>
+
 
           {/* === DESKTOP VERSION (two-column original) === */}
           <div className="hidden lg:block order-1 space-y-6 fade-in">
-            <h1 className="heading-serif text-5xl lg:text-6xl xl:text-7xl text-wellness-text leading-tight">
+            <h1 className="font-lora text-5xl lg:text-6xl xl:text-7xl text-wellness-text leading-tight text-[#312B24]">
               From <span className="font-medium italic">Chaotic Overthinker</span> →<br />
               To <span className="font-medium italic">Peaceful Powerhouse</span>
             </h1>
@@ -76,16 +72,14 @@ export const HeroSection = () => {
 
             <p className="text-xl text-wellness-text/80 leading-relaxed">
               2-Day Energy Reset Challenge with Dr. Valarmathi Srinivasan —{" "}
-              <span className="inline-block font-bold text-primary-dark bg-[#FDE68A] px-3 py-1 rounded-lg animate-pulse-slow">
-                Join today for just ₹99
-              </span>
+             
             </p>
 
             
 
             <button className="hero-cta group bg-[#175B53] hover:bg-[#134741] transition-colors duration-300 mx-auto">
               <div className="cta-content">
-                <span className="cta-text text-white">Book Your Spot Now</span>
+                <span className="cta-text text-white">Book My Spot Now</span>
                 <div className="cta-icon">
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </div>

@@ -24,16 +24,17 @@ const Index = () => {
   }, []);
 
   return (
-    <main className="min-h-screen bg-background">
-      <HeroSection />
-      <StrugglesSection />
-      <HowWeHelpSection />
-      <TransformationSection />
-      <CoachSection />
-      <TestimonialsSection />
-      <FinalCTASection />
-      <StickyBottomCTA />
-    </main>
+<main className="min-h-screen bg-[#F8F6E8]">
+  <HeroSection />
+  <StrugglesSection />
+  <HowWeHelpSection />
+  <TransformationSection />
+  <CoachSection />
+  <TestimonialsSection />
+  <FinalCTASection />
+  <StickyBottomCTA />
+</main>
+
   );
 };
 
