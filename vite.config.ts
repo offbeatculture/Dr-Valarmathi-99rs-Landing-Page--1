@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base:"/Dr-Valarmathi-99rs-Landing-Page--1/",
+  base:"/",
   server: {
     host: "::",
     port: 8080,

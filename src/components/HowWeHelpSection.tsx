@@ -1,5 +1,7 @@
 import { Wind, Activity, Moon, Undo2, Sparkles, ArrowRight } from "lucide-react";
 import { motion, type Variants, type Transition } from "framer-motion";
+import { useEffect, useCallback } from "react";
+
 const solutions = [
   { icon: Wind,     title: "Breath Practices",        description: "Simple but powerful breathing techniques to calm your nervous system and bring instant clarity." },
   { icon: Activity, title: "Gut & Vagus Nerve Healing", description: "Proven methods to stimulate your vagus nerve and reset your digestive system for lasting balance." },
@@ -16,8 +18,72 @@ const cardVariants: Variants = {
   show:   { opacity: 1, rotateX: 0, y: 0, transition: spring },
 };
 
+function useRazorpay() {
+  useEffect(() => {
+    if (window.Razorpay) return; // already loaded
+    const s = document.createElement("script");
+    s.src = "https://checkout.razorpay.com/v1/checkout.js";
+    s.async = true;
+    document.body.appendChild(s);
+    return () => {
+      // optional cleanup
+    };
+  }, []);
+}
 
 export const HowWeHelpSection = () => {
+   useRazorpay();
+  
+    // Add this if you want a tiny inline prompt before checkout (optional):
+  // const ask = (msg: string, def = "") => window.prompt(msg, def) || "";
+  
+  const handlePay = useCallback(() => {
+    if (!window.Razorpay) {
+      alert("Payment system is initializing. Please try again in a moment.");
+      return;
+    }
+  
+    const options: RazorpayOptions = {
+      key: "rzp_live_wiof4A5PtjJvJM",
+      amount: 9900, // ₹99 in paise
+      currency: "INR",
+      name: "Energy Reset Bootcamp",
+      description: "2-Day Energy Reset Challenge (₹99)",
+      theme: { color: "#0e4740" },
+  
+      prefill: {
+        name: "",
+        email: "",
+        contact: "",
+      },
+  
+      notes: {
+        request_name: "true",
+        request_email: "true",
+        request_contact: "true",
+      },
+  
+      handler: (resp) => {
+        console.log("Payment success:", resp);
+        // Redirect to your thank you page
+        window.location.href = "/ty-er-fb1";
+      },
+  
+      modal: {
+        ondismiss: () => console.log("Checkout closed"),
+      },
+    };
+  
+    const rzp = new window.Razorpay(options);
+  
+    rzp.on?.("payment.failed", (err: any) => {
+      console.error("Payment failed:", err);
+      alert("Payment failed. Please try again.");
+    });
+  
+    rzp.open();
+  }, []);
+  
   return (
     <section className="py-12 lg:py-16 px-4 md:px-6 bg-[#F8F6E8]">
       <div className="w-full max-w-6xl mx-auto">
@@ -27,7 +93,7 @@ export const HowWeHelpSection = () => {
             How We <span className="heading-italic">Transform</span> Your Life
           </h2>
           <p className="text-sm md:text-base text-[#0F2925]/80 max-w-2xl lg:mx-auto">
-            In this 2-Day Challenge, Dr. Valarmathi will guide you through
+            In this 2-Day Challenge, Dr. Valarrmathi  will guide you through
             practices that reset your body, mind, and energy.
           </p>
         </div>
@@ -47,7 +113,7 @@ export const HowWeHelpSection = () => {
   style={{ transformStyle: "preserve-3d" }}
 >
   {/* Icon aligned left on mobile, centered on desktop */}
-  <Icon className="w-7 h-7 text-[#C6FF3E] mb-3 mx-0 lg:mx-auto" />
+  <Icon className="w-7 h-7 text-[#FDE68A] mb-3 mx-0 lg:mx-auto" />
 
   <h3 className="text-base md:text-lg font-semibold mb-2">{s.title}</h3>
   <p className="text-sm md:text-base text-gray-300 leading-snug">{s.description}</p>
@@ -71,7 +137,7 @@ export const HowWeHelpSection = () => {
 
         {/* CTA Button (pill style) */}
         <div className="text-left lg:text-center">
-          <button className="group inline-flex items-center justify-between rounded-full border border-[#E5E3DA] bg-[#F8F6E8] px-5 py-2 shadow-sm hover:shadow-md transition-all duration-300">
+          <button className="group inline-flex items-center justify-between rounded-full border border-[#E5E3DA] bg-[#F8F6E8] px-5 py-2 shadow-sm hover:shadow-md transition-all duration-300" onClick={handlePay}>
             <span className="text-sm md:text-base font-bold text-[#312B24]">
               Book My Spot Now
             </span>

@@ -65,6 +65,7 @@ export const StickyBottomCTA = () => {
               active:scale-95
               shadow-[0_6px_20px_rgba(253,230,138,0.35)]
             "
+            onClick={() => window.open("https://rzp.io/rzp/er-bootcamp-99", "_blank")}
           >
             Book Now
             <ArrowRight className="h-4 w-4" />
@@ -75,6 +76,7 @@ export const StickyBottomCTA = () => {
             aria-label="Close"
             onClick={() => setDismissed(true)}
             className="shrink-0 rounded-lg p-1.5 text-white/70 hover:bg-white/10 hover:text-white"
+            
           >
             <X className="h-4 w-4" />
           </button>
