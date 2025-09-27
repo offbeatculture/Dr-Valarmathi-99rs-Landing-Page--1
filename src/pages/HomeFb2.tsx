@@ -84,7 +84,7 @@ export default function EnergyResetOffer() {
           <div className="mt-6">
             <div
               ref={buttonMountRef}
-              className="rounded-xl border border-[#E5E3DA] bg-[#F8F6E8] p-3 flex justify-center"
+              className="rzp-btn-wrapper rounded-xl border border-[#E5E3DA] bg-[#F8F6E8] p-3 flex justify-center"
             />
             {/* (Optional) fallback */}
             <p className="mt-2 text-center text-xs text-[#312B24]/60">
@@ -94,5 +94,7 @@ export default function EnergyResetOffer() {
         </div>
       </div>
     </section>
+    
   );
+  
 }

@@ -1,89 +1,180 @@
+// StickyBottomCTA.tsx
 import { ArrowRight, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useEffect, useState , useCallback } from "react";
+import { createPortal } from "react-dom";
+
+
+function useRazorpay() {
+  useEffect(() => {
+    if (window.Razorpay) return; // already loaded
+    const s = document.createElement("script");
+    s.src = "https://checkout.razorpay.com/v1/checkout.js";
+    s.async = true;
+    document.body.appendChild(s);
+    return () => {
+      // optional cleanup
+    };
+  }, []);
+}
+
 
 export const StickyBottomCTA = () => {
+
+  const [isMounted, setIsMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      const threshold = (documentHeight - windowHeight) * 0.15;
-      setIsVisible(scrollY > threshold);
+  useRazorpay();
+  
+    // Add this if you want a tiny inline prompt before checkout (optional):
+  // const ask = (msg: string, def = "") => window.prompt(msg, def) || "";
+  
+  const handlePay = useCallback(() => {
+    if (!window.Razorpay) {
+      alert("Payment system is initializing. Please try again in a moment.");
+      return;
+    }
+  
+    const options: RazorpayOptions = {
+      key: "rzp_live_wiof4A5PtjJvJM",
+      amount: 9901, // ₹99 in paise
+      currency: "INR",
+      name: "Energy Reset Bootcamp",
+      description: "2-Day Energy Reset Challenge (₹99)",
+      theme: { color: "#0e4740" },
+  
+      prefill: {
+        name: "",
+        email: "",
+        contact: "",
+      },
+  
+      notes: {
+        request_name: "true",
+        request_email: "true",
+        request_contact: "true",
+      },
+  
+      handler: (resp) => {
+        console.log("Payment success:", resp);
+        // Redirect to your thank you page
+        window.location.href = "/ty-er-fb1";
+      },
+  
+      modal: {
+        ondismiss: () => console.log("Checkout closed"),
+      },
     };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+  
+    const rzp = new window.Razorpay(options);
+  
+    rzp.on?.("payment.failed", (err: any) => {
+      console.error("Payment failed:", err);
+      alert("Payment failed. Please try again.");
+    });
+  
+    rzp.open();
   }, []);
 
-  if (!isVisible || dismissed) return null;
+  useEffect(() => setIsMounted(true), []);
 
-  return (
+  useEffect(() => {
+    let timeoutId: number | undefined;
+
+    const getDocEl = () =>
+      (document.scrollingElement || document.documentElement) as HTMLElement;
+
+    const checkVisibility = () => {
+      const el = getDocEl();
+      const scrollY = window.scrollY || el.scrollTop || 0;
+      const windowHeight = window.innerHeight || 0;
+      const docHeight = el.scrollHeight || 0;
+      const scrollable = Math.max(docHeight - windowHeight, 0);
+
+      // Show after 120px or 15% of page, whichever comes first
+      const threshold = scrollable * 0.15;
+      const scrolledEnough = scrollY > 120 || scrollY > threshold;
+      setIsVisible(scrolledEnough);
+    };
+
+    // If page barely scrolls (mobile 100vh pages), auto-show after 1s
+    const showIfNotScrollableSoon = () => {
+      const el = getDocEl();
+      const scrollable = Math.max(el.scrollHeight - (window.innerHeight || 0), 0);
+      if (scrollable < 8) {
+        timeoutId = window.setTimeout(() => setIsVisible(true), 1000);
+      }
+    };
+
+    checkVisibility();
+    showIfNotScrollableSoon();
+
+    window.addEventListener("scroll", checkVisibility, { passive: true });
+    window.addEventListener("resize", checkVisibility);
+    window.addEventListener("orientationchange", checkVisibility);
+
+    return () => {
+      window.removeEventListener("scroll", checkVisibility);
+      window.removeEventListener("resize", checkVisibility);
+      window.removeEventListener("orientationchange", checkVisibility);
+      if (timeoutId) window.clearTimeout(timeoutId);
+    };
+  }, []);
+
+  if (!isMounted || !isVisible || dismissed) return null;
+
+  const bar = (
     <div
       className="
-        fixed inset-x-0 bottom-0 z-50
+        fixed inset-x-0 bottom-0 z-[9999]
         px-3 pb-[calc(0.5rem+env(safe-area-inset-bottom))] pt-2
-        lg:hidden
         animate-slide-up
       "
       role="region"
       aria-label="Sticky CTA"
+      // create a new stacking context so nothing underneath clips it
+      style={{ isolation: "isolate" }}
     >
       <div
         className="
-          mx-auto max-w-xl
-          relative rounded-2xl
-          bg-[#0F2925] text-white
+          mx-auto max-w-xl relative overflow-hidden
+          rounded-2xl bg-[#0F2925] text-white
           shadow-[0_8px_30px_rgba(0,0,0,0.25)]
-          overflow-hidden
         "
       >
-        {/* Soft golden glow border */}
         <div className="absolute inset-0 rounded-2xl border-2 border-[#FDE68A]/50 pointer-events-none animate-glow" />
-
         <div className="flex items-center gap-3 px-4 py-3 relative z-10">
-          {/* Text */}
           <div className="min-w-0">
-            <div className="text-sm font-semibold truncate">
-              From Chaos → Calm
-            </div>
+            <div className="text-sm font-semibold truncate">From Chaos → Calm</div>
             <div className="text-xs text-[#FDE68A] font-medium animate-price-pop">
               2-Day Energy Reset • Just ₹99
             </div>
           </div>
 
-          {/* CTA */}
           <button
             className="
               ml-auto inline-flex items-center gap-2
-              rounded-full px-4 py-2
-              font-semibold text-[#0F2925]
+              rounded-full px-4 py-2 font-semibold text-[#0F2925]
               bg-[#FDE68A] hover:bg-[#fcd34d]
-              transition-transform duration-300
-              active:scale-95
+              transition-transform duration-300 active:scale-95
               shadow-[0_6px_20px_rgba(253,230,138,0.35)]
             "
-            onClick={() => window.open("https://rzp.io/rzp/er-bootcamp-99", "_blank")}
+            onClick={handlePay}
           >
             Book Now
             <ArrowRight className="h-4 w-4" />
           </button>
 
-          {/* Dismiss */}
           <button
             aria-label="Close"
             onClick={() => setDismissed(true)}
             className="shrink-0 rounded-lg p-1.5 text-white/70 hover:bg-white/10 hover:text-white"
-            
           >
             <X className="h-4 w-4" />
           </button>
         </div>
       </div>
 
-      {/* Animations */}
       <style>{`
         @keyframes slide-up {
           0% { transform: translateY(16px); opacity: 0; }
@@ -105,4 +196,7 @@ export const StickyBottomCTA = () => {
       `}</style>
     </div>
   );
+
+  // Render into <body> to escape any transformed/overflow ancestors
+  return createPortal(bar, document.body);
 };

@@ -45,7 +45,7 @@ export const HowWeHelpSection = () => {
   
     const options: RazorpayOptions = {
       key: "rzp_live_wiof4A5PtjJvJM",
-      amount: 9900, // ₹99 in paise
+      amount: 9901, // ₹99 in paise
       currency: "INR",
       name: "Energy Reset Bootcamp",
       description: "2-Day Energy Reset Challenge (₹99)",

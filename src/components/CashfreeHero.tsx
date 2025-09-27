@@ -5,76 +5,73 @@
 //   }
 // }
 
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback ,useState } from "react";
 import { ArrowRight, Calendar } from "lucide-react";
 import heroImage from "@/assets/coach.png";
 
-function useRazorpay() {
+declare global {
+  interface Window {
+    Cashfree?: any;
+  }
+}
+
+function useCashfree() {
   useEffect(() => {
-    if (window.Razorpay) return; // already loaded
+    if (window.Cashfree) return;
     const s = document.createElement("script");
-    s.src = "https://checkout.razorpay.com/v1/checkout.js";
+    // Cashfree PG v2 UI SDK (works for Checkout v3)
+    s.src = "https://sdk.cashfree.com/js/ui/2.0.0/cashfree.js";
     s.async = true;
     document.body.appendChild(s);
-    return () => {
-      // optional cleanup
-    };
   }, []);
 }
 
+
 export const HeroSection = () => {
-  useRazorpay();
+  useCashfree();
 
-  // Add this if you want a tiny inline prompt before checkout (optional):
-// const ask = (msg: string, def = "") => window.prompt(msg, def) || "";
+  // OPTIONAL: collect user details before opening checkout
+  const [prefill] = useState({ name: "", email: "", contact: "" });
 
-const handlePay = useCallback(() => {
-  if (!window.Razorpay) {
-    alert("Payment system is initializing. Please try again in a moment.");
-    return;
-  }
+  const handlePay = useCallback(async () => {
+    if (!window.Cashfree) {
+      alert("Payment system is initializing. Please try again in a moment.");
+      return;
+    }
 
-  const options: RazorpayOptions = {
-    key: "rzp_live_wiof4A5PtjJvJM",
-    amount: 9901, 
-    currency: "INR",
-    name: "Energy Reset Bootcamp",
-    description: "2-Day Energy Reset Challenge (₹99)",
-    theme: { color: "#0e4740" },
+    try {
+      // 1) Ask your server to create an order and return payment_session_id
+      const res = await fetch("/api/cf-create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount: 99,                    // INR 99
+          name: prefill.name || "",      // optional
+          email: prefill.email || "",
+          phone: prefill.contact || "",
+        }),
+      });
 
-    prefill: {
-      name: "",
-      email: "",
-      contact: "",
-    },
+      if (!res.ok) {
+        const msg = await res.text();
+        throw new Error(msg || "Failed to create Cashfree order");
+      }
 
-    notes: {
-      request_name: "true",
-      request_email: "true",
-      request_contact: "true",
-    },
+      const data = await res.json();
+      // Cashfree returns { order_id, payment_session_id, ... }
+      const paymentSessionId = data.payment_session_id;
 
-    handler: (resp) => {
-      console.log("Payment success:", resp);
-      // Redirect to your thank you page
-      window.location.href = "/ty-er-fb1";
-    },
-
-    modal: {
-      ondismiss: () => console.log("Checkout closed"),
-    },
-  };
-
-  const rzp = new window.Razorpay(options);
-
-  rzp.on?.("payment.failed", (err: any) => {
-    console.error("Payment failed:", err);
-    alert("Payment failed. Please try again.");
-  });
-
-  rzp.open();
-}, []);
-
+      // 2) Open Cashfree Checkout
+      const cashfree = new window.Cashfree({ mode: "PROD" }); // or "SANDBOX"
+      await cashfree.checkout({
+        paymentSessionId,
+        redirectTarget: "_self", // after payment, Cashfree returns to return_url you set server-side
+      });
+    } catch (err: any) {
+      console.error(err);
+      alert("Could not start payment. Please try again.");
+    }
+  }, [prefill]);
 
 
 
