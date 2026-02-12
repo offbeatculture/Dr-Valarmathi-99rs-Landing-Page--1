@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Energy Transformation Challenge Design System */
+
+@layer base {
+  :root {
+    /* Brand Colors - Exact Palette */
+    --background:["#F8F6E9"]; /* #FAF8EE cream */
+    --foreground: 24 13% 17%; /* #2F2A26 dark text */
+
+    --card: 48 33% 96%;
+    --card-foreground: 24 13% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 13% 17%;
+
+    --primary: 160 26% 16%; /* #1E342E dark green */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 48 33% 96%;
+    --secondary-foreground: 24 13% 17%;
+
+    --muted: 48 20% 92%;
+    --muted-foreground: 24 8% 45%;
+
+    --accent: 48 33% 96%;
+    --accent-foreground: 160 26% 16%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 48 20% 88%;
+    --input: 48 20% 92%;
+    --ring: 160 26% 16%;
+
+    --radius: 1rem;
+
+    /* Custom Design Tokens */
+    --cream: 48 33% 96%;
+    --cream-dark: 48 20% 92%;
+    --dark-green: 160 26% 16%;
+    --dark-green-light: 160 26% 25%;
+    --wellness-text: 24 13% 17%;
+    
+    /* Gradients */
+    --gradient-wellness: linear-gradient(135deg, hsl(var(--cream)), hsl(var(--cream-dark)));
+    --gradient-cta: linear-gradient(90deg, transparent 50%, hsl(var(--dark-green)) 50%);
+    
+    /* Shadows */
+    --shadow-card: 0 4px 20px -4px hsl(var(--dark-green) / 0.1);
+    --shadow-hover: 0 8px 30px -8px hsl(var(--dark-green) / 0.15);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: [#F8F6E9];
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  /* Wellness Card Styles */
+  .wellness-card {
+    @apply bg-card rounded-2xl p-6 shadow-[var(--shadow-card)] transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-hover)] hover:-translate-y-1;
+  }
+
+  /* Hero CTA Button */
+  .hero-cta {
+    @apply relative inline-flex items-center gap-3 px-1 py-1 rounded-full border-2 border-primary font-semibold transition-[var(--transition-smooth)] hover:scale-105 overflow-hidden bg-cream;
+  }
+
+  .hero-cta .cta-content {
+    @apply flex items-center gap-3 relative z-10;
+  }
+
+  .hero-cta .cta-text {
+    @apply px-7 py-3 text-white;
+  }
+
+  .hero-cta .cta-icon {
+    @apply px-4 py-3 bg-primary text-primary-foreground rounded-full;
+  }
+
+  /* Fade In Animation */
+  .fade-in {
+    @apply opacity-0 translate-y-4 transition-all duration-500 ease-out;
+  }
+
+  .fade-in.animate {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Typography Classes */
+  .heading-serif {
+    @apply font-serif font-semibold text-foreground leading-tight;
+  }
+
+  .heading-italic {
+    @apply italic;
+  }
+}
+
+@layer utilities {
+  /* Custom Gradient Utilities */
+  .bg-gradient-wellness {
+    background: var(--gradient-wellness);
+  }
+
+  .bg-gradient-cta {
+    background: var(--gradient-cta);
+  }
+
+  /* Shadow Utilities */
+  .shadow-wellness {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-wellness-hover {
+    box-shadow: var(--shadow-hover);
+  }
+}@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.03);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2.5s ease-in-out infinite;
+}
