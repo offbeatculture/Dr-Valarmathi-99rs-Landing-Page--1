@@ -14,7 +14,7 @@ export const ThankYouPage = () => {
 
         {/* Subtext */}
         <p className="text-[#312B24]/80 text-base md:text-lg leading-relaxed">
-          Your spot for the <strong>2-Day Energy Reset Challenge</strong> is confirmed.  
+          Your spot for the <strong> Breath Chakra Reset Workshop</strong> is confirmed.  
           We can’t wait to see you there!
         </p>
 

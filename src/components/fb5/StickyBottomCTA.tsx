@@ -89,7 +89,7 @@ export const StickyBottomCTA = () => {
               From Chaos → Calm
             </div>
             <div className="text-xs text-[#FDE68A] font-medium animate-price-pop">
-              2-Day Breath Chakra Reset • Just ₹99
+           Breath Chakra Reset • Just ₹99
             </div>
           </div>
 
