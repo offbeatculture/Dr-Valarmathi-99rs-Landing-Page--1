@@ -135,9 +135,9 @@ export const HowWeHelpSection = () => {
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 text-left lg:text-center items-stretch">
-  {cards.map((c) => {
+    {/* Cards (with support line inside each card) */}
+<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 text-left lg:text-center items-stretch">
+  {cards.map((c, idx) => {
     const Icon = c.icon;
 
     return (
@@ -152,36 +152,22 @@ export const HowWeHelpSection = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.35 }}
-        style={{ transformStyle: 'preserve-3d' }}
+        style={{ transformStyle: "preserve-3d" }}
       >
         {/* Top content */}
         <Icon className="w-7 h-7 text-[#FDE68A] mb-3 mx-0 lg:mx-auto" />
 
-        <h3 className="text-base md:text-lg font-semibold mb-2">{c.title}</h3>
+        <h3 className="text-base md:text-lg font-semibold mb-2">
+          {c.title}
+        </h3>
 
         <p className="text-sm md:text-base text-gray-300 leading-snug">
           {c.description}
         </p>
 
-        {/* Bottom (Special content blocks aligned)
-        {c.type === 'points' && (c as any).points?.length ?  (
-          <div className="mt-auto pt-4 rounded-lg bg-white/5 border border-white/10 p-3 text-left">
-            <div className="space-y-2">
-              {zoneList.map((z) => (
-                <div key={z.title} className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#FDE68A] mt-0.5 shrink-0" />
-                  <div className="text-sm text-gray-200">
-                    <span className="font-semibold text-white">{z.title}</span>
-                    <span className="text-gray-300"> ({z.desc})</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )} */}
-
-        {c.type === 'points' && (c as any).points?.length ? (
-          <div className="mt-auto pt-4 rounded-lg bg-white/5 border border-white/10 p-3 text-left">
+        {/* Points block */}
+        {c.type === "points" && (c as any).points?.length && (
+          <div className="mt-4 rounded-lg bg-white/5 border border-white/10 p-3 text-left">
             <ul className="space-y-2">
               {(c as any).points.map((p: string) => (
                 <li key={p} className="flex items-start gap-2">
@@ -191,26 +177,20 @@ export const HowWeHelpSection = () => {
               ))}
             </ul>
           </div>
-        ) : (
-          // If some cards have no special block, keep spacing consistent
-          <div className="mt-auto pt-4" />
         )}
+
+        {/* Support line INSIDE the card */}
+        <div className="mt-auto pt-4">
+          <div className="rounded-lg bg-white/10 border border-white/15 p-3">
+            <p className="text-sm md:text-base text-white/90">
+              {bullets[idx]}
+            </p>
+          </div>
+        </div>
       </motion.div>
     );
   })}
 </div>
-
-        {/* Support lines (the “so you…” type statements) */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-          {bullets.map((b) => (
-            <div
-              key={b}
-              className="rounded-xl border border-[#E5E3DA] bg-[#F8F6E8] p-4 shadow-sm"
-            >
-              <p className="text-sm md:text-base text-[#0F2925]/90">{b}</p>
-            </div>
-          ))}
-        </div>
 
         {/* Closing line */}
         <div className="text-left lg:text-center mt-8">
