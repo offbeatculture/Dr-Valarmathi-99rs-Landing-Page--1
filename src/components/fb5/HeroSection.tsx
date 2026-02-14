@@ -57,6 +57,28 @@ function getUTMs() {
   }
 }
 
+/** ================= PROFESSION (Razorpay-safe) =================
+ * Razorpay payment pages often only prefill dropdown fields when the value
+ * matches EXACT option text. Also "/" can cause mismatches.
+ */
+function toRazorpayProfession(value: string) {
+  const v = (value || "").trim();
+
+  // ✅ Adjust these right-side values to EXACTLY match your Razorpay page options
+  const map: Record<string, string> = {
+    "Working Professional": "Working Professional",
+    "Business Owner / Entrepreneur": "Business Owner / Entrepreneur", // or "Business Owner" if that's the option there
+    "Student": "Student",
+    "Freelancer": "Freelancer",
+    "Other": "Other",
+  };
+
+  const mapped = map[v] ?? v;
+
+  // fallback sanitize: remove slashes & extra spaces (helps when options are "Business Owner Entrepreneur")
+  return mapped.replace(/\s*\/\s*/g, " ").replace(/\s+/g, " ").trim();
+}
+
 /** ================= RAZORPAY SDK ================= */
 function useRazorpay() {
   useEffect(() => {
@@ -157,14 +179,18 @@ export const HeroSection = () => {
 
     const utms = getUTMs();
 
+    // ✅ Make profession Razorpay-safe (fixes Business Owner / Freelancer mismatch)
+    const professionForPay = toRazorpayProfession(form.profession);
+
     try {
       await fetch(WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...form, // ✅ includes reason
+          ...form,
+          profession: professionForPay, // store normalized too (optional)
           ...utms,
-          page_url: window.location.href, // better than dummy
+          page_url: window.location.href,
           ts: new Date().toISOString(),
         }),
         keepalive: true,
@@ -178,8 +204,8 @@ export const HeroSection = () => {
       `?name=${encodeURIComponent(form.name)}` +
       `&email=${encodeURIComponent(form.email)}` +
       `&whatsapp_number=${encodeURIComponent(form.phone)}` +
-      `&profession=${encodeURIComponent(form.profession)}` +
-      `&reason=${encodeURIComponent(form.reason)}` + // ✅ NEW PARAM
+      `&profession=${encodeURIComponent(professionForPay)}` + // ✅ FIXED
+      `&reason=${encodeURIComponent(form.reason)}` +
       `&utm_source=${encodeURIComponent(utms.utm_source)}` +
       `&utm_medium=${encodeURIComponent(utms.utm_medium)}` +
       `&utm_campaign=${encodeURIComponent(utms.utm_campaign)}` +
@@ -203,7 +229,8 @@ export const HeroSection = () => {
             </h3>
 
             <p className="font-bold text-2xl font-black">
-              Learn The <span className="text-[red]/60"> Breath Chakra Reset</span>{" "}
+              Learn The{" "}
+              <span className="text-[red]/60"> Breath Chakra Reset</span>{" "}
               that unlocks trapped stress from your body
             </p>
 
