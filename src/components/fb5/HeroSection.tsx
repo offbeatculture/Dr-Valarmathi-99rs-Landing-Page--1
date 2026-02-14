@@ -6,9 +6,9 @@ import heroImage from "@/assets/coach.png";
 const SHEET_CSV =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vSpR1A2wo_YmEEjM1eRgBLmt81jIvSV57pf-92eHLfV8-EzoM7y2wIrzdMCjb_rMaZnDyWVVfV-CjcQ/pub?gid=1837654082&single=true&output=csv";
 
-const WEBHOOK_URL = "https://offbeatn8n.coachswastik.com/webhook/er-fb3";
+const WEBHOOK_URL = "https://offbeatn8n.coachswastik.com/webhook/breath-leads";
 
-const RAZORPAY_PAGE_URL = "https://pages.razorpay.com/er-fb3";
+const RAZORPAY_PAGE_URL = "https://pages.razorpay.com/pl_SFYizNqlHtXpI8/view";
 
 const UTM_KEY = "lead_utms";
 
@@ -60,7 +60,7 @@ function getUTMs() {
 /** ================= RAZORPAY SDK ================= */
 function useRazorpay() {
   useEffect(() => {
-    if (window.Razorpay) return;
+    if ((window as any).Razorpay) return;
     const s = document.createElement("script");
     s.src = "https://checkout.razorpay.com/v1/checkout.js";
     s.async = true;
@@ -85,6 +85,7 @@ export const HeroSection = () => {
     email: "",
     phone: "",
     profession: "",
+    reason: "", // ✅ NEW FIELD
   });
 
   /** Capture UTMs once */
@@ -109,7 +110,7 @@ export const HeroSection = () => {
 
   /** HERO CTA – Order based payment (kept as-is) */
   const handlePay = useCallback(async () => {
-    if (!window.Razorpay) {
+    if (!(window as any).Razorpay) {
       alert("Payment system is initializing. Please try again.");
       return;
     }
@@ -132,7 +133,7 @@ export const HeroSection = () => {
       return;
     }
 
-    const rzp = new window.Razorpay({
+    const rzp = new (window as any).Razorpay({
       key: "rzp_live_wiof4A5PtjJvJM",
       order_id: order.id,
       amount: amountPaise,
@@ -161,9 +162,9 @@ export const HeroSection = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...form,
+          ...form, // ✅ includes reason
           ...utms,
-          page_url: "https://dummy-pageview-url.com",
+          page_url: window.location.href, // better than dummy
           ts: new Date().toISOString(),
         }),
         keepalive: true,
@@ -178,6 +179,7 @@ export const HeroSection = () => {
       `&email=${encodeURIComponent(form.email)}` +
       `&whatsapp_number=${encodeURIComponent(form.phone)}` +
       `&profession=${encodeURIComponent(form.profession)}` +
+      `&reason=${encodeURIComponent(form.reason)}` + // ✅ NEW PARAM
       `&utm_source=${encodeURIComponent(utms.utm_source)}` +
       `&utm_medium=${encodeURIComponent(utms.utm_medium)}` +
       `&utm_campaign=${encodeURIComponent(utms.utm_campaign)}` +
@@ -198,14 +200,17 @@ export const HeroSection = () => {
             <h3 className="font-lora text-4xl lg:text-6xl text-[#312B24]">
               From <i>Chaotic Overthinker</i> →<br />
               To <i>Peaceful Powerhouse</i>
-              
             </h3>
-            <p className="font-bold text-2xl font-black">Learn The <span className="text-[red]/60"> Breath Chakra Reset</span> that unlocks trapped stress in 90 minutes</p>
+
+            <p className="font-bold text-2xl font-black">
+              Learn The <span className="text-[red]/60"> Breath Chakra Reset</span>{" "}
+              that unlocks trapped stress from your body
+            </p>
 
             <p className="font-bold text-lg text-center lg:text-left">
               <span className="text-[#B91C1C]">Calm your mind</span> •{" "}
-              <span className="text-[#1E3A8A]">Heal your gut</span> •{" "}
-              <span className="text-[#14532D]">Reset your energy</span>
+              <span className="text-[#1E3A8A]">Release stored stress</span> •{" "}
+              <span className="text-[#14532D]">Reset your nervous system</span>
             </p>
 
             <button
@@ -289,6 +294,22 @@ export const HeroSection = () => {
               <option>Student</option>
               <option>Freelancer</option>
               <option>Other</option>
+            </select>
+
+            {/* ✅ NEW QUESTION */}
+            <select
+              required
+              className="w-full h-12 rounded-xl border px-4 bg-white"
+              value={form.reason}
+              onChange={(e) => setForm({ ...form, reason: e.target.value })}
+            >
+              <option value="" disabled>
+                What led you to register for this workshop?
+              </option>
+              <option>Stress and overthinking</option>
+              <option>Digestive discomfort</option>
+              <option>Body stiffness</option>
+              <option>Low energy</option>
             </select>
 
             <button

@@ -44,14 +44,15 @@ const cards = [
     icon: Sparkles,
     title: "Chakra Block Diagnosis",
     description:
-      "A fast body-based self-assessment to find where your stress is stored.",
-    type: "zones" as const,
+      "A fast body-based self-assessment to find where your stress is stored:",
+      points: ["Zone 1 – Survival:lower body", "Zone 2 – Digestion:stomach & gut", "Zone 3 – Emotions:chest & throat"],
+    type: "points" as const,
   },
   {
     icon: Undo2,
     title: "The 3-Zone Unlock System",
     description:
-      "A guided release process that works directly with the body zones holding stress, that helps release:",
+      "A guided process that works directly with your body zones to release:",
     points: ["emotional tension", "chronic muscle tightness", "stress trapped in your gut"],
     type: "points" as const,
   },
@@ -76,6 +77,7 @@ export const HowWeHelpSection = () => {
       alert("Payment system is initializing. Please try again in a moment.");
       return;
     }
+    
 
     const amountPaise = 9901; // ₹99.01
     const orderRes = await fetch(CREATE_ORDER_URL, {
@@ -127,66 +129,76 @@ export const HowWeHelpSection = () => {
             How We <span className="heading-italic">Transform</span> Your Life
           </h2>
           <p className="text-sm md:text-base text-[#0F2925]/80 max-w-2xl lg:mx-auto">
-            In this 90-minute workshop, Dr. Valarrmathi will guide you through The
+            In this Masterclass, Dr. Valarrmathi will guide you through The
             Breath Chakra Reset - a proven system that unlocks trapped stress and
             restores your body's natural balance.
           </p>
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 text-left lg:text-center">
-          {cards.map((c) => {
-            const Icon = c.icon;
-            return (
-              <motion.div
-                key={c.title}
-                className="p-5 md:p-6 rounded-xl bg-[#0F2925] text-white shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-1"
-                variants={cardVariants}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.35 }}
-                style={{ transformStyle: "preserve-3d" }}
-              >
-                <Icon className="w-7 h-7 text-[#FDE68A] mb-3 mx-0 lg:mx-auto" />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 text-left lg:text-center items-stretch">
+  {cards.map((c) => {
+    const Icon = c.icon;
 
-                <h3 className="text-base md:text-lg font-semibold mb-2">{c.title}</h3>
-                <p className="text-sm md:text-base text-gray-300 leading-snug">
-                  {c.description}
-                </p>
+    return (
+      <motion.div
+        key={c.title}
+        className="
+          p-5 md:p-6 rounded-xl bg-[#0F2925] text-white
+          shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-1
+          flex flex-col h-full
+        "
+        variants={cardVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.35 }}
+        style={{ transformStyle: 'preserve-3d' }}
+      >
+        {/* Top content */}
+        <Icon className="w-7 h-7 text-[#FDE68A] mb-3 mx-0 lg:mx-auto" />
 
-                {/* Special content blocks */}
-                {c.type === "zones" && (
-                  <div className="mt-4 rounded-lg bg-white/5 border border-white/10 p-3 text-left">
-                    <div className="space-y-2">
-                      {zoneList.map((z) => (
-                        <div key={z.title} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-[#FDE68A] mt-0.5 shrink-0" />
-                          <div className="text-sm text-gray-200">
-                            <span className="font-semibold text-white">{z.title}</span>
-                            <span className="text-gray-300"> ({z.desc})</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+        <h3 className="text-base md:text-lg font-semibold mb-2">{c.title}</h3>
+
+        <p className="text-sm md:text-base text-gray-300 leading-snug">
+          {c.description}
+        </p>
+
+        {/* Bottom (Special content blocks aligned)
+        {c.type === 'points' && (c as any).points?.length ?  (
+          <div className="mt-auto pt-4 rounded-lg bg-white/5 border border-white/10 p-3 text-left">
+            <div className="space-y-2">
+              {zoneList.map((z) => (
+                <div key={z.title} className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#FDE68A] mt-0.5 shrink-0" />
+                  <div className="text-sm text-gray-200">
+                    <span className="font-semibold text-white">{z.title}</span>
+                    <span className="text-gray-300"> ({z.desc})</span>
                   </div>
-                )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )} */}
 
-                {c.type === "points" && (c as any).points?.length ? (
-                  <div className="mt-4 rounded-lg bg-white/5 border border-white/10 p-3 text-left">
-                    <ul className="space-y-2">
-                      {(c as any).points.map((p: string) => (
-                        <li key={p} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-[#FDE68A] mt-0.5 shrink-0" />
-                          <span className="text-sm text-gray-200">{p}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ) : null}
-              </motion.div>
-            );
-          })}
-        </div>
+        {c.type === 'points' && (c as any).points?.length ? (
+          <div className="mt-auto pt-4 rounded-lg bg-white/5 border border-white/10 p-3 text-left">
+            <ul className="space-y-2">
+              {(c as any).points.map((p: string) => (
+                <li key={p} className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#FDE68A] mt-0.5 shrink-0" />
+                  <span className="text-sm text-gray-200">{p}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          // If some cards have no special block, keep spacing consistent
+          <div className="mt-auto pt-4" />
+        )}
+      </motion.div>
+    );
+  })}
+</div>
 
         {/* Support lines (the “so you…” type statements) */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -203,7 +215,7 @@ export const HowWeHelpSection = () => {
         {/* Closing line */}
         <div className="text-left lg:text-center mt-8">
           <p className="text-sm md:text-lg text-[#0F2925] font-semibold">
-            In just 90 minutes, you'll feel the shift:{" "}
+            In this masterclass, you'll feel the shift:{" "}
             <span className="italic text-[#0F2925]">
               From chaotic, restless energy → to calm, focused power.
             </span>
