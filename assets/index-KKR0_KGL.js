@@ -391,7 +391,7 @@ Error generating stack: `+i.message+`
           mx-auto max-w-xl relative overflow-hidden
           rounded-2xl bg-[#0F2925] text-white
           shadow-[0_8px_30px_rgba(0,0,0,0.25)]
-        `,children:[a.jsx("div",{className:"absolute inset-0 rounded-2xl border-2 border-[#FDE68A]/50 pointer-events-none animate-glow"}),a.jsxs("div",{className:"flex items-center gap-3 px-4 py-3 relative z-10",children:[a.jsxs("div",{className:"min-w-0",children:[a.jsx("div",{className:"text-sm font-semibold truncate",children:"From Chaos → Calm"}),a.jsx("div",{className:"text-xs text-[#FDE68A] font-medium animate-price-pop",children:"2-Day Breath Chakra Reset • Just ₹99"})]}),a.jsxs("button",{onClick:o,className:`
+        `,children:[a.jsx("div",{className:"absolute inset-0 rounded-2xl border-2 border-[#FDE68A]/50 pointer-events-none animate-glow"}),a.jsxs("div",{className:"flex items-center gap-3 px-4 py-3 relative z-10",children:[a.jsxs("div",{className:"min-w-0",children:[a.jsx("div",{className:"text-sm font-semibold truncate",children:"From Chaos → Calm"}),a.jsx("div",{className:"text-xs text-[#FDE68A] font-medium animate-price-pop",children:"Breath Chakra Reset • Just ₹99"})]}),a.jsxs("button",{onClick:o,className:`
               ml-auto inline-flex items-center gap-2
               rounded-full px-4 py-2 font-semibold text-[#0F2925]
               bg-[#FDE68A] hover:bg-[#fcd34d]
