@@ -32,7 +32,7 @@ const textTestimonials = [
     name: "Arjun",
     location: "Hyderabad",
     content:
-      "The 2-Day Reset changed my energy completely. I feel light, peaceful, and focused.",
+      "The Breath Chakra Workshop changed my energy completely. I feel light, peaceful, and focused.",
   },
 ];
 
@@ -46,7 +46,7 @@ export const TestimonialsSection = () => {
             Real <span className="heading-italic">Transformations</span>
           </h2>
           <p className="text-sm md:text-lg lg:text-xl text-muted-foreground max-w-3xl lg:mx-auto">
-            Hear what others have experienced during the 2-Day Reset.
+            Hear what others have experienced during the Breath Chakra Reset.
           </p>
         </div>
 

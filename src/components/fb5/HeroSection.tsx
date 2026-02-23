@@ -4,7 +4,7 @@ import heroImage from "@/assets/coach.png";
 
 /** ================= CONFIG ================= */
 const SHEET_CSV =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSpR1A2wo_YmEEjM1eRgBLmt81jIvSV57pf-92eHLfV8-EzoM7y2wIrzdMCjb_rMaZnDyWVVfV-CjcQ/pub?gid=1837654082&single=true&output=csv";
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vR7k_ibL4l57reSl5_tU-Iy8f8o2u_FpC3Pvjj_38AalAQLxGmFEqcbrLElxub1pso31_ZdukwyIqCI/pub?gid=138894925&single=true&output=csv";
 
 const WEBHOOK_URL = "https://offbeatn8n.coachswastik.com/webhook/breath-leads";
 
@@ -115,20 +115,34 @@ export const HeroSection = () => {
     getUTMs();
   }, []);
 
-  /** Load date */
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await fetch(SHEET_CSV, { cache: "no-store" });
-        const csv = await res.text();
-        const lines = csv.trim().split(/\r?\n/);
-        const raw = (lines[1] ?? lines[0] ?? "").trim();
-        setDateText(raw.replace(/^"(.*)"$/, "$1") || "Date coming soon");
-      } catch {
-        setDateText("Date coming soon");
-      }
-    })();
-  }, []);
+/** Load date + time (Column A + B only) */
+useEffect(() => {
+  (async () => {
+    try {
+      const res = await fetch(SHEET_CSV, { cache: "no-store" });
+      const csv = await res.text();
+      const lines = csv.trim().split(/\r?\n/);
+
+      // Row 2 (skip header)
+      const row = lines[1] ?? lines[0] ?? "";
+
+      // Safe CSV split (handles commas inside quotes)
+      const cells =
+        row.match(/("([^"]|"")*"|[^,]+)/g)?.map((c) =>
+          c.trim().replace(/^"|"$/g, "").replace(/""/g, '"')
+        ) ?? [];
+
+      const date = (cells[0] || "").trim(); // Column A
+      const time = (cells[1] || "").trim(); // Column B
+
+      const formatted = [date, time].filter(Boolean).join(" | ");
+
+      setDateText(formatted || "Date coming soon");
+    } catch {
+      setDateText("Date coming soon");
+    }
+  })();
+}, []);
 
   /** HERO CTA – Order based payment (kept as-is) */
   const handlePay = useCallback(async () => {

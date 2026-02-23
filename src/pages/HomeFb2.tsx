@@ -69,19 +69,34 @@ export default function EnergyResetOffer() {
   }, []);
 
   /** Load date */
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await fetch(SHEET_CSV, { cache: "no-store" });
-        const csv = await res.text();
-        const lines = csv.trim().split(/\r?\n/);
-        const raw = (lines[1] ?? lines[0] ?? "").trim();
-        setDateText(raw.replace(/^"(.*)"$/, "$1") || "Date coming soon");
-      } catch {
-        setDateText("Date coming soon");
-      }
-    })();
-  }, []);
+/** Load date + time (Column A + B only) */
+useEffect(() => {
+  (async () => {
+    try {
+      const res = await fetch(SHEET_CSV, { cache: "no-store" });
+      const csv = await res.text();
+      const lines = csv.trim().split(/\r?\n/);
+
+      // Row 2 (skip header)
+      const row = lines[1] ?? lines[0] ?? "";
+
+      // Safe CSV split (handles commas inside quotes)
+      const cells =
+        row.match(/("([^"]|"")*"|[^,]+)/g)?.map((c) =>
+          c.trim().replace(/^"|"$/g, "").replace(/""/g, '"')
+        ) ?? [];
+
+      const date = (cells[0] || "").trim(); // Column A
+      const time = (cells[1] || "").trim(); // Column B
+
+      const formatted = [date, time].filter(Boolean).join(" | ");
+
+      setDateText(formatted || "Date coming soon");
+    } catch {
+      setDateText("Date coming soon");
+    }
+  })();
+}, []);
 
   /** Submit */
   const onSubmit = async (e: React.FormEvent) => {

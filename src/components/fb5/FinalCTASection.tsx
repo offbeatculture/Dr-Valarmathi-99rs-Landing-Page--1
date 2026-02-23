@@ -28,7 +28,7 @@ export const FinalCTASection = () => {
             {/* Subheading */}
             <p className="text-base md:text-lg text-gray-300 max-w-xl mx-auto">
               Join hundreds of others who have already discovered the path from chaos to clarity.
-              Your peaceful, powerful self is just 2 days away.
+              Your peaceful, powerful self is just a workshop away.
             </p>
 
             {/* Pricing */}
