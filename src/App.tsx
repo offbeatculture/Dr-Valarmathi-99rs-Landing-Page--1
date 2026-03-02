@@ -33,20 +33,20 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-         <Route path="/" element={<NotFound />} />
-          <Route path="/fb1" element={<Index />} />
-          <Route path="/fb3" element={<Indexfb3 />} />
+         <Route path="/" element={<Indexfb5 />} />
+          <Route path="/fb1" element={<Indexfb5 />} />
+          <Route path="/fb3" element={<Indexfb5 />} />
           <Route path="/fb5" element={<Indexfb5 />} />
-          <Route path="/ga1" element={<IndexGa1 />} />
-          <Route path="/ga2" element={<IndexGa2 />} />
-          <Route path="/ty-er-ga1" element={<ThankuGa1/>} />
-          <Route path="/ty-er-fb1" element={<Thanku/>} />
-          <Route path="/ty-er-fb3" element={<Thanku3/>} />
+          <Route path="/ga1" element={<Indexfb5 />} />
+          <Route path="/ga2" element={<Indexfb5 />} />
+          <Route path="/ty-er-ga1" element={<Thanku5/>} />
+          <Route path="/ty-er-fb1" element={<Thanku5/>} />
+          <Route path="/ty-er-fb3" element={<Thanku5/>} />
           <Route path="/ty-er-fb5" element={<Thanku5/>} />
-          <Route path="/fb2" element={<EnergyResetOffer/>} />
-          <Route path="/fb4" element={<EnergyResetOfferFb4/>} />
-          <Route path="/ty-er-fb2" element={<Thanku2/>} />
-          <Route path="/ty-er-fb4" element={<Thanku4/>} />
+          <Route path="/fb2" element={<Indexfb5/>} />
+          <Route path="/fb4" element={<Indexfb5/>} />
+          <Route path="/ty-er-fb2" element={<Thanku5/>} />
+          <Route path="/ty-er-fb4" element={<Thanku5/>} />
           <Route path="/privacy" element={<Privacy/>} />
           <Route path="/terms" element={<Terms/>} />
           <Route path="/refund" element={<RefundPolicy/>} />
