@@ -22,6 +22,7 @@ import Thanku4 from "./pages/ThankuPagefb4";
 import Thanku3 from "./pages/ThankuPageFb3";
 import Indexfb5 from "./pages/indexFb5";
 import Thanku5 from "./pages/ThankuPageFb5";
+import OtoPage from "./pages/OtoPage";
 
 
 const queryClient = new QueryClient();
@@ -39,6 +40,7 @@ const App = () => (
           <Route path="/fb5" element={<Indexfb5 />} />
           <Route path="/ga1" element={<Indexfb5 />} />
           <Route path="/ga2" element={<Indexfb5 />} />
+          <Route path="/oto" element={<OtoPage />} />
           <Route path="/ty-er-ga1" element={<Thanku5/>} />
           <Route path="/ty-er-fb1" element={<Thanku5/>} />
           <Route path="/ty-er-fb3" element={<Thanku5/>} />
