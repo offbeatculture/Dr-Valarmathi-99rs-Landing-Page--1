@@ -10,6 +10,7 @@ import { FinalCTASection } from "@/components/fb3/FinalCTASection";
 import { StickyBottomCTA } from "@/components/fb3/StickyBottomCTA";
 import { useFadeInAnimation } from "@/hooks/useFadeInAnimation";
 import { useFacebookPixel } from "@/hooks/useFacebookPixelHome";
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet"></link>
 
 const Index = () => {
   useFadeInAnimation();
