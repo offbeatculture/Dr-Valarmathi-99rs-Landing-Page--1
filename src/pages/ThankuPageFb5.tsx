@@ -1,5 +1,6 @@
 // src/pages/Thanku.tsx
 import { ThankYouPage } from "@/components/Thanku";
+import { ThankYouPage2 } from "@/components/Thanku2";
 import { useFacebookPixel } from "@/hooks/useFacebookPixel";
 
 const Thanku5 = () => {
@@ -20,7 +21,7 @@ const Thanku5 = () => {
         />
       </noscript>
 
-      <ThankYouPage />
+      <ThankYouPage2 />
     </main>
   );
 };

@@ -189,36 +189,59 @@ export default function OtoPage() {
       </section>
 
       {/* VALUE STACK */}
-      <section className="max-w-4xl mx-auto px-6 py-16 text-center">
+     {/* <section className="max-w-4xl mx-auto px-6 py-16 text-center"> */}
 
-        <h3
-          className="text-3xl md:text-4xl mb-8"
-          style={{ fontFamily: "Playfair Display, serif", letterSpacing: "-0.02em" }}
-        >
-          Five tools. One simple price.
-        </h3>
+  {/* Image */}
+<section className="flex justify-center px-6 py-24 bg-gradient-to-b from-[#f7f6f3] to-[#f1efe9]">
 
-        <div className="bg-white rounded-2xl shadow p-8 text-left space-y-4 text-lg">
-          <ValueItem name="Breath Chakra Reset Workbook" price="₹999" />
-          <ValueItem name="5-Minute Body Reset Protocols" price="₹999" />
-          <ValueItem name="Hormone Reset Field Guide" price="₹999" />
-          <ValueItem name="30 Days Body Conversations" price="₹999" />
-          <ValueItem name="Nervous System Playlist" price="₹999" />
+  <div className="max-w-3xl w-full bg-white rounded-[32px] shadow-2xl border border-gray-100 p-10 sm:p-14 text-center transition-all duration-300 hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)]">
 
-          <hr />
+    {/* Heading */}
+    <h3
+      className="text-xl sm:text-2xl md:text-4xl font-bold md:font-semibold whitespace-nowrap mb-12"
+      style={{ fontFamily: "Playfair Display, serif", letterSpacing: "-0.02em" }}
+    >
+      Five tools. One simple price.
+    </h3>
 
-          <div className="flex justify-between font-semibold">
-            <span>Total Value</span>
-            <span className="line-through">₹4,999</span>
-          </div>
-        </div>
+    {/* Image */}
+    <div className="flex justify-center mb-12">
+      <img
+        src="/valarmathi.jpeg"
+        alt="Guide System"
+        className="w-[360px] sm:w-[420px] md:w-[460px] max-w-full object-contain"
+      />
+    </div>
 
-        <p className="mt-8 text-xl font-semibold text-[#1f5d55]">
-          Today only: ₹999 — 80% off
-        </p>
+    {/* Pricing list */}
+    <div className="text-left text-lg space-y-5">
 
-      </section>
+      <ValueItem name="Breath Chakra Reset Workbook" price="₹999" />
+      <ValueItem name="5-Minute Body Reset Protocols" price="₹999" />
+      <ValueItem name="Hormone Reset Field Guide" price="₹999" />
+      <ValueItem name="30 Days Body Conversations" price="₹999" />
+      <ValueItem name="Nervous System Playlist" price="₹999" />
 
+      <hr className="border-gray-200 my-6" />
+
+      <div className="flex justify-between items-center font-semibold text-lg">
+        <span>Total Value</span>
+        <span className="line-through text-gray-400 text-xl">₹4,999</span>
+      </div>
+
+    </div>
+
+    {/* Offer */}
+    <div className="mt-12 bg-[#f7f6f3] rounded-2xl py-6 px-6">
+      <p className="text-lg text-gray-600 mb-2">Limited-time offer</p>
+      <p className="text-3xl font-bold text-[#1f5d55]">
+        Today only: ₹999 — 80% off
+      </p>
+    </div>
+
+  </div>
+
+</section>
       {/* FINAL CTA */}
       <section id="order" className="bg-[#12332F] text-white py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
