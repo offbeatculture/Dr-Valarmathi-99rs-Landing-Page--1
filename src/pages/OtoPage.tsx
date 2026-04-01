@@ -5,52 +5,54 @@ export default function OtoPage() {
   return (
     <div className="w-full bg-[#FBF7F1] text-[#1f2d2a]">
 
-      {/* TOP BAR */}
-      <div className="bg-[#12332F] text-white text-center text-base py-2 px-4 sticky top-0 z-50">
-        {/* Wait – Don&apos;t close this page. This offer disappears the moment you leave. */}
-        <span className="font-bold">🎉 You're registered!</span><br></br> Your spot for the Breath Chakra Reset  is confirmed.
-      </div>
-
       {/* HERO */}
-     <section className="max-w-5xl mx-auto px-6 pt-8 pb-4 md:pt-10 md:pb-6 text-center">
+      <section className="max-w-3xl mx-auto px-6 pt-10 pb-6 text-center">
 
-        {/* <h2
-          className="text-2xl md:text-3xl mb-4"
-          style={{ fontFamily: "Playfair Display, serif", letterSpacing: "-0.02em" }}
-        >
+        {/* GREEN BADGE */}
+        <div className="flex justify-center mb-6">
+          <div className="bg-gradient-to-r from-[#174f48] to-[#2b7a70] text-white px-6 py-2 rounded-full shadow text-sm font-medium">
+            👏 You're registered for the Breath Chakra Reset
+          </div>
+        </div>
+
+        {/* <p className="text-base font-bold text-[#2c6b63] mb-4">
           But before you go, I have something special for you…
-        </h2> */}
+        </p> */}
 
-        <p className="text-base font-bold text-[#2c6b63] mb-4">
-          But before you go, I have something special for you…
-        </p>
+  <h1
+  className="text-[28px] md:text-[40px] lg:text-[46px] leading-[1.12] text-[#1d1d1d] mb-4 font-normal"
+  style={{
+    fontFamily: "'Playfair Display', serif",
+    letterSpacing: "-0.02em",
+  }}
+>
+  Your <span className="underline font-bold">nervous system</span>
+  <br />
+  just asked for <span className="underline font-bold">help</span>.
+</h1>
 
-        <h1
-          className="text-2xl md:text-5xl leading-tight text-[#2a2724] mb-6 font-bold"
-          style={{ fontFamily: "Playfair Display, serif", letterSpacing: "-0.02em" }}
-        >
-          Your nervous system just got your attention.
-          <br />
-          Now give it the entire toolkit to support it.
-        </h1>
+<p
+  className="text-[18px] md:text-[24px] leading-[1.35] text-[#2a2724] mb-6 font-normal"
+  style={{
+    fontFamily: "'Playfair Display', serif",
+    letterSpacing: "-0.02em",
+  }}
+>
+  Give it the{" "}
+  <span className="font-bold underline">full toolkit</span> to{" "}
+  <span className="font-bold underline">reset</span>,{" "}
+  <span className="font-bold underline">regulate</span> and{" "}
+  <span className="font-bold underline">support your body</span>.
+</p>
 
-        {/* WISTIA VIDEO */}
-       {/* WISTIA VIDEO */}
-<div className="max-w-3xl mx-auto mb-8">
+        {/* VIDEO CARD */}
+      <div className="bg-white border-2 border-[#7A8A80] rounded-2xl shadow-md p-4 md:p-5 max-w-3xl mx-auto mb-8">
+  <p className="text-[16px] md:text-[18px] text-[#2a2724] mb-4 tracking-wide">
+    <span className="font-bold">IMPORTANT:</span>Watch This Short Video
+  </p>
 
-  {/* Heading Section */}
-  <div className="bg-[#12332F] text-center py-2">
-    <h2 className="text-sm md:text-xl font-base text-white">
-      IMPORTANT! Watch This Short Video
-    </h2>
 
-    <p className="text-white mt-1">
-      (Click on Unmute Button)
-    </p>
-  </div>
-
-  {/* Video */}
-  <div className="w-full aspect-video overflow-hidden rounded-none">
+  <div className="w-full aspect-video overflow-hidden rounded-xl">
     <iframe
       src="https://fast.wistia.net/embed/iframe/5bibd8d7jk?autoplay=1&muted=1&controlsVisibleOnLoad=true"
       title="Valarmathi OTO Video"
@@ -59,28 +61,27 @@ export default function OtoPage() {
       className="w-full h-full"
     ></iframe>
   </div>
-
 </div>
-        {/* <p className="text-lg text-[#4b5f5b] mb-8">
-          Everyday practical tools for the anxiety, the 3am mind, the bad days,
-          and every moment your body needs support — starting tonight.
-        </p> */}
 
-        <a
+        {/* CTA */}
+       <a
   href="https://pages.razorpay.com/pl_SQgXaE9YpHwF5r/view"
-  className="inline-block bg-[#1f5d55] hover:bg-[#184b45] text-white px-8 py-4 rounded-xl font-semibold transition"
+  className="inline-block bg-[#1f5d55] hover:bg-[#184b45] text-white 
+  px-8 py-4 md:px-12 md:py-5 
+  text-base md:text-lg 
+  rounded-xl font-semibold transition"
 >
-  The Nervous System SOS Kit — Complete Bundle
-  <span className="block text-sm mt-1">
+  The Nervous System SOS Kit —
+  <span className="block text-sm md:text-base mt-1">
     <del>₹4,999</del> → ₹999
   </span>
 </a>
 
-        <p className="mt-4 text-sm">
-  <a href="/ty-er-fb5" className="underline text-gray-600 font-semibold">
-    No thanks, I&apos;ll manage without it
-  </a>
-</p>
+        {/* <p className="mt-4 text-sm">
+          <a href="http://join.valarmathisrinivasan.in/fb-wap" className="underline text-gray-600 font-semibold">
+            No thanks, Take me to WhatsApp Group
+          </a>
+        </p> */}
 
       </section>
 
@@ -101,7 +102,7 @@ export default function OtoPage() {
       </section>
 
       {/* PRODUCT SECTION */}
-      <section className="bg-[#F3EFE7] py-14">
+    <section className="bg-[#F3EFE7] py-14">
         <div className="max-w-6xl mx-auto px-6">
 
           <div className="text-center mb-10">
@@ -188,60 +189,6 @@ export default function OtoPage() {
         </div>
       </section>
 
-      {/* VALUE STACK */}
-     {/* <section className="max-w-4xl mx-auto px-6 py-16 text-center"> */}
-
-  {/* Image */}
-<section className="flex justify-center px-6 py-24 bg-gradient-to-b from-[#f7f6f3] to-[#f1efe9]">
-
-  <div className="max-w-3xl w-full bg-white rounded-[32px] shadow-2xl border border-gray-100 p-10 sm:p-14 text-center transition-all duration-300 hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)]">
-
-    {/* Heading */}
-    <h3
-      className="text-xl sm:text-2xl md:text-4xl font-bold md:font-semibold whitespace-nowrap mb-12"
-      style={{ fontFamily: "Playfair Display, serif", letterSpacing: "-0.02em" }}
-    >
-      Five tools. One simple price.
-    </h3>
-
-    {/* Image */}
-    <div className="flex justify-center mb-12">
-      <img
-        src="/valarmathi.jpeg"
-        alt="Guide System"
-        className="w-[360px] sm:w-[420px] md:w-[460px] max-w-full object-contain"
-      />
-    </div>
-
-    {/* Pricing list */}
-    <div className="text-left text-lg space-y-5">
-
-      <ValueItem name="Breath Chakra Reset Workbook" price="₹999" />
-      <ValueItem name="5-Minute Body Reset Protocols" price="₹999" />
-      <ValueItem name="Hormone Reset Field Guide" price="₹999" />
-      <ValueItem name="30 Days Body Conversations" price="₹999" />
-      <ValueItem name="Nervous System Playlist" price="₹999" />
-
-      <hr className="border-gray-200 my-6" />
-
-      <div className="flex justify-between items-center font-semibold text-lg">
-        <span>Total Value</span>
-        <span className="line-through text-gray-400 text-xl">₹4,999</span>
-      </div>
-
-    </div>
-
-    {/* Offer */}
-    <div className="mt-12 bg-[#f7f6f3] rounded-2xl py-6 px-6">
-      <p className="text-lg text-gray-600 mb-2">Limited-time offer</p>
-      <p className="text-3xl font-bold text-[#1f5d55]">
-        Today only: ₹999 — 80% off
-      </p>
-    </div>
-
-  </div>
-
-</section>
       {/* FINAL CTA */}
       <section id="order" className="bg-[#12332F] text-white py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -258,11 +205,14 @@ export default function OtoPage() {
           </p>
 
           <button
-  onClick={() => window.location.href = "https://pages.razorpay.com/pl_SQgXaE9YpHwF5r/view"}
-  className="bg-[#2fb4a6] hover:bg-[#25a194] text-[#0b2b27] font-semibold px-10 py-4 rounded-xl text-lg transition"
->
-  Yes — Add the SOS Kit to My Order
-</button>
+            onClick={() =>
+              (window.location.href =
+                "https://pages.razorpay.com/pl_SQgXaE9YpHwF5r/view")
+            }
+            className="bg-[#2fb4a6] hover:bg-[#25a194] text-[#0b2b27] font-semibold px-10 py-4 rounded-xl text-lg transition"
+          >
+            Yes — Add the SOS Kit to My Order
+          </button>
 
         </div>
       </section>
@@ -284,8 +234,8 @@ function Card({ icon, tag, title, points }) {
 
       <div className="flex items-center gap-3 mb-4">
 
-        <div className="bg-[#2fb4a6]/15 text-[#2fb4a6] p-3 rounded-xl shadow-sm">
-          {React.cloneElement(icon, { size: 26, strokeWidth: 2.5 })}
+        <div className="bg-[#2fb4a6]/15 text-[#2fb4a6] p-3 rounded-xl">
+          {React.cloneElement(icon, { size: 26 })}
         </div>
 
         <span className="text-xs font-semibold bg-[#e5f2ef] text-[#1f5d55] px-3 py-1 rounded-full">
@@ -295,7 +245,7 @@ function Card({ icon, tag, title, points }) {
 
       <h4
         className="text-xl mb-4"
-        style={{ fontFamily: "Playfair Display, serif", letterSpacing: "-0.02em" }}
+        style={{ fontFamily: "Playfair Display, serif" }}
       >
         {title}
       </h4>
@@ -306,15 +256,6 @@ function Card({ icon, tag, title, points }) {
         ))}
       </ul>
 
-    </div>
-  );
-}
-
-function ValueItem({ name, price }) {
-  return (
-    <div className="flex justify-between">
-      <span>{name}</span>
-      <span>{price}</span>
     </div>
   );
 }
