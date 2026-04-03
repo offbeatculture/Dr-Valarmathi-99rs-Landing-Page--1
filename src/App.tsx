@@ -30,6 +30,7 @@ import { ThankYouPageGa } from "./components/ga5/ThankuGa";
 import ThankuGa5Oto from "./pages/ThankuGa5Oto";
 import ThankuPageGa5 from "./pages/ThankuPageGa5";
 import Indexfb6 from "./pages/indexFb6";
+import Thanku6 from "./pages/TankuPageFb6";
 
 
 const queryClient = new QueryClient();
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/oto-fb5" element={<OtoPage />} />
           <Route path="/ty-er-fb5" element={<Thanku5 />} />
           <Route path="/ty-er-oto-fb5" element={<ThankuOto5 />} />
+           <Route path="/ty-er-fb6" element={<Thanku6 />} />
           
           <Route path="/ga5" element={<IndexGa5 />} />
           <Route path="/oto-ga5" element={<OtoPageGa />} />
