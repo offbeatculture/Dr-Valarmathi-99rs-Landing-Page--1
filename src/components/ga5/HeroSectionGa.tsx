@@ -24,6 +24,7 @@ function getUTMs() {
     utm_content: "",
     utm_term: "",
     fclid: "",
+    gclid: "",
   };
 
   if (typeof window === "undefined") return empty;
@@ -36,6 +37,7 @@ function getUTMs() {
     utm_content: params.get("utm_content") || "",
     utm_term: params.get("utm_term") || "",
     fclid: params.get("fclid") || "",
+    gclid: params.get("gclid") || "",
   };
 
   const saved = localStorage.getItem(UTM_KEY);
@@ -56,6 +58,7 @@ function getUTMs() {
     return { ...empty, ...fromUrl };
   }
 }
+
 
 /** ================= PROFESSION (Razorpay-safe) =================
  * Razorpay payment pages often only prefill dropdown fields when the value
@@ -215,6 +218,19 @@ useEffect(() => {
     } catch {
       // silent fail
     }
+
+
+    // ✅ PUSH TO DATALAYER HERE
+    if (typeof window !== "undefined" && (window as any).dataLayer) {
+  (window as any).dataLayer.push({
+    event: "ec_form_submit",
+    user_data: {
+      email: form.email,
+      phone_number: `+91${form.phone}`,
+    },
+  });
+}
+
 
     const payUrl =
       `${RAZORPAY_PAGE_URL}` +

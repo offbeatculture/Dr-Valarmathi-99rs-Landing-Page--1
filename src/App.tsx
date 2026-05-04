@@ -31,6 +31,7 @@ import ThankuGa5Oto from "./pages/ThankuGa5Oto";
 import ThankuPageGa5 from "./pages/ThankuPageGa5";
 import Indexfb6 from "./pages/indexFb6";
 import Thanku6 from "./pages/TankuPageFb6";
+import Thankupage7999 from "./pages/Thankupage7999";
 
 
 const queryClient = new QueryClient();
@@ -42,7 +43,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Indexfb5 />} />
+          <Route path="/" element={<IndexGa5/>} />
 
 
 {/* Active Pages */}
@@ -52,6 +53,7 @@ const App = () => (
           <Route path="/ty-er-fb5" element={<Thanku5 />} />
           <Route path="/ty-er-oto-fb5" element={<ThankuOto5 />} />
            <Route path="/ty-er-fb6" element={<Thanku6 />} />
+           <Route path="/ty-7999" element={<Thankupage7999 />} />
           
           <Route path="/ga5" element={<IndexGa5 />} />
           <Route path="/oto-ga5" element={<OtoPageGa />} />

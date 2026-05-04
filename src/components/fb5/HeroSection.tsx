@@ -8,6 +8,8 @@ const SHEET_CSV =
 
 const WEBHOOK_URL = "https://offbeatn8n.coachswastik.com/webhook/breath-leads";
 
+
+
 const RAZORPAY_PAGE_URL = "https://pages.razorpay.com/pl_SFYizNqlHtXpI8/view";
 
 const UTM_KEY = "lead_utms";
@@ -37,6 +39,8 @@ function getUTMs() {
     utm_term: params.get("utm_term") || "",
     fclid: params.get("fclid") || "",
   };
+
+  
 
   const saved = localStorage.getItem(UTM_KEY);
   const hasAny = Object.values(fromUrl).some(Boolean);
