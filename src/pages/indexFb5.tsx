@@ -42,6 +42,7 @@ const Indexfb5 = () => {
   <TransformationSection />
   <CoachSection />
   <TestimonialsSection />
+  <FAQSection/>
   <FinalCTASection />
   <StickyBottomCTA />
 </main>

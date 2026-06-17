@@ -7,28 +7,29 @@ import {
 
 const faqs = [
   {
-    question: "What exactly will I learn in the 2-day challenge?",
-    answer: "You'll discover the fundamental connection between gut health and mental clarity, learn specific protocols to reset your digestive system, practice proven mindfulness techniques for calming mental chatter, and receive a complete energy optimization system you can use daily."
+    question: "Will I get Recording?",
+    answer:
+      "You will get the recording only if you optin for the Recording during checkout."
   },
   {
-    question: "Is this suitable for beginners with no wellness experience?",
-    answer: "Absolutely! This challenge is designed for anyone, regardless of their current wellness knowledge. Dr. Valarmathi breaks down complex concepts into simple, actionable steps that anyone can follow and implement immediately."
+    question: "Is it in Hindi or English?",
+    answer:
+      "This workshop will be conducted in basic English only."
   },
   {
-    question: "What if I can't attend the live sessions?",
-    answer: "No worries! All sessions are recorded and you'll have lifetime access to the materials. You can complete the challenge at your own pace and revisit the content whenever you need it."
+    question: "What is the duration ?",
+    answer:
+      "It is a 2.5 hours program."
   },
   {
-    question: "How quickly will I see results?",
-    answer: "Many participants notice improvements in energy and mental clarity within the first 24 hours. The full benefits of gut healing may take a few weeks to manifest completely, but the foundational changes begin immediately."
+    question: "What are the next steps after registering for the Masterclass?",
+    answer:
+      "You have to join the WhatsApp group for the Masterclass. All the announcements will be communicated to the group. We will also be sharing a link to the Masterclass over email."
   },
   {
-    question: "Is there any ongoing support after the challenge?",
-    answer: "Yes! You'll get access to our exclusive community group where you can connect with other participants and receive ongoing guidance. Dr. Valarmathi also provides follow-up resources to help you maintain your transformation."
-  },
-  {
-    question: "What if I'm not satisfied with the results?",
-    answer: "We're so confident in the power of this program that we offer a 30-day money-back guarantee. If you don't feel a significant improvement in your energy and mental clarity, we'll refund your investment completely."
+    question: "Is it Live?",
+    answer:
+      "- This Masterclass was originally recorded during a live session and is now available as a limited-time broadcast.- You’ll experience the full energy of the original session — just like those who attended it live."
   }
 ];
 
