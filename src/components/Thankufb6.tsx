@@ -20,7 +20,8 @@ export const ThankYouPagefb6 = () => {
 
         {/* WhatsApp Group CTA */}
         <a
-          href="http://join.valarmathisrinivasan.in/fb-wap"
+          // href="http://join.valarmathisrinivasan.in/fb-wap"
+          href="http://join.askvalarrmathi.com/bcr-wap"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-2 rounded-full bg-[#175B53] hover:bg-[#134741] px-6 py-3 text-white font-semibold shadow-md transition-all duration-300"

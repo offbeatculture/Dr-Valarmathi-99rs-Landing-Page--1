@@ -60,7 +60,6 @@ const App = () => (
           <Route path="/ty-er-ga5" element={<ThankuPageGa5/>} />
           <Route path="/ty-er-oto-ga5" element={< ThankuGa5Oto />} />
          
-
 {/* Active Pages */}
 
 
