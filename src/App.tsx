@@ -32,6 +32,8 @@ import ThankuPageGa5 from "./pages/ThankuPageGa5";
 import Indexfb6 from "./pages/indexFb6";
 import Thanku6 from "./pages/TankuPageFb6";
 import Thankupage7999 from "./pages/Thankupage7999";
+import IndexOrg from "./pages/IndexOrg";
+import ThankYouPageOrg from "./pages/ThankYouPageOrg";
 
 
 const queryClient = new QueryClient();
@@ -59,6 +61,9 @@ const App = () => (
           <Route path="/oto-ga5" element={<OtoPageGa />} />
           <Route path="/ty-er-ga5" element={<ThankuPageGa5/>} />
           <Route path="/ty-er-oto-ga5" element={< ThankuGa5Oto />} />
+
+          <Route path="/org" element={<IndexOrg />} />
+          <Route path="/ty-er-org" element={<ThankYouPageOrg />} />
          
 {/* Active Pages */}
 
