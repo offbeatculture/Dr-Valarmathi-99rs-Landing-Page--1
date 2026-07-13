@@ -6,7 +6,9 @@ import heroImage from "@/assets/coach.png";
 const SHEET_CSV =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vR7k_ibL4l57reSl5_tU-Iy8f8o2u_FpC3Pvjj_38AalAQLxGmFEqcbrLElxub1pso31_ZdukwyIqCI/pub?gid=138894925&single=true&output=csv";
 
-const WEBHOOK_URL = "https://offbeatn8n.coachswastik.com/webhook/breath-leads";
+// const WEBHOOK_URL = "https://offbeatn8n.coachswastik.com/webhook/breath-leads";
+
+const WEBHOOK_URL = "https://n8n.swastiknandakumar.com/webhook/breath-leads";
 
 
 
