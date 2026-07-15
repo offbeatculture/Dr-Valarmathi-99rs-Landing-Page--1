@@ -43,7 +43,7 @@ function getUTMs() {
     gclid: params.get("gclid") || "",
     fbclid: params.get("fbclid") || "",
   }
-
+const saved = localStorage.getItem("utms");
   try {
     const stored = saved ? JSON.parse(saved) : {};
     return {
