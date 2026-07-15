@@ -1,6 +1,7 @@
 import { useEffect, useCallback, useState } from "react";
 import { ArrowRight, Calendar } from "lucide-react";
 import heroImage from "@/assets/coach.png";
+import { trackLead } from "@/lib/truelens";
 
 /** ================= CONFIG ================= */
 const SHEET_CSV =
@@ -25,6 +26,8 @@ function getUTMs() {
     utm_content: "",
     utm_term: "",
     fclid: "",
+    gclid: "",
+    fbclid: "",
   };
 
   if (typeof window === "undefined") return empty;
@@ -37,13 +40,8 @@ function getUTMs() {
     utm_content: params.get("utm_content") || "",
     utm_term: params.get("utm_term") || "",
     fclid: params.get("fclid") || "",
-  };
-
-  const saved = localStorage.getItem(UTM_KEY);
-  const hasAny = Object.values(fromUrl).some(Boolean);
-
-  if (!saved && hasAny) {
-    localStorage.setItem(UTM_KEY, JSON.stringify(fromUrl));
+    gclid: params.get("gclid") || "",
+    fbclid: params.get("fbclid") || "",
   }
 
   try {
@@ -194,6 +192,14 @@ useEffect(() => {
 
     const utms = getUTMs();
 
+    trackLead({
+      email: form.email,
+      phone: form.phone,
+      name: form.name,
+      profession: form.profession,
+      reason: form.reason,
+    });
+
     // ✅ Make profession Razorpay-safe (fixes Business Owner / Freelancer mismatch)
     const professionForPay = toRazorpayProfession(form.profession);
 
@@ -226,7 +232,9 @@ useEffect(() => {
       `&utm_campaign=${encodeURIComponent(utms.utm_campaign)}` +
       `&utm_content=${encodeURIComponent(utms.utm_content)}` +
       `&utm_term=${encodeURIComponent(utms.utm_term)}` +
-      `&fclid=${encodeURIComponent(utms.fclid)}`;
+      `&fclid=${encodeURIComponent(utms.fclid)}` +
+      `&gclid=${encodeURIComponent(utms.gclid)}` +
+      `&fbclid=${encodeURIComponent(utms.fbclid)}`;
 
     window.location.href = payUrl;
   };
