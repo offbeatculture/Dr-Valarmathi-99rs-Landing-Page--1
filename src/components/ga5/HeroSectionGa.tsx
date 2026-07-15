@@ -1,6 +1,7 @@
 import { useEffect, useCallback, useState } from "react";
 import { ArrowRight, Calendar } from "lucide-react";
 import heroImage from "@/assets/coach.png";
+import { trackLead } from "@/lib/truelens";
 
 /** ================= CONFIG ================= */
 const SHEET_CSV =
@@ -9,7 +10,7 @@ const SHEET_CSV =
 // const WEBHOOK_URL = "https://offbeatn8n.coachswastik.com/webhook/breath-leads-ga";
 const WEBHOOK_URL = "https://n8n.swastiknandakumar.com/webhook/breath-leads-ga";
 
-const RAZORPAY_PAGE_URL = "https://pages.razorpay.com/pl_SSbeHHD35BLvdt/view";
+const RAZORPAY_PAGE_URL = "https://pages.razorpay.com/bcr-ga?lpsource=ga5";
 
 const UTM_KEY = "lead_utms";
 
@@ -26,6 +27,7 @@ function getUTMs() {
     utm_term: "",
     fclid: "",
     gclid: "",
+    fbclid: "",
   };
 
   if (typeof window === "undefined") return empty;
@@ -39,6 +41,7 @@ function getUTMs() {
     utm_term: params.get("utm_term") || "",
     fclid: params.get("fclid") || "",
     gclid: params.get("gclid") || "",
+    fbclid: params.get("fbclid") || "",
   };
 
   const saved = localStorage.getItem(UTM_KEY);
@@ -200,6 +203,14 @@ useEffect(() => {
 
     const utms = getUTMs();
 
+    trackLead({
+      email: form.email,
+      phone: form.phone,
+      name: form.name,
+      profession: form.profession,
+      reason: form.reason,
+    });
+
     // ✅ Make profession Razorpay-safe (fixes Business Owner / Freelancer mismatch)
     const professionForPay = toRazorpayProfession(form.profession);
 
@@ -223,31 +234,32 @@ useEffect(() => {
 
     // ✅ PUSH TO DATALAYER HERE
     if (typeof window !== "undefined" && (window as any).dataLayer) {
-  (window as any).dataLayer.push({
-    event: "ec_form_submit",
-    user_data: {
-      email: form.email,
-      phone_number: `+91${form.phone}`,
-    },
-  });
-}
+      (window as any).dataLayer.push({
+        event: "ec_form_submit",
+        user_data: {
+          email: form.email,
+          phone_number: `+91${form.phone}`,
+        },
+      });
+    }
 
+    const payUrl = new URL(RAZORPAY_PAGE_URL);
+    payUrl.searchParams.set("name", form.name);
+    payUrl.searchParams.set("email", form.email);
+    payUrl.searchParams.set("whatsapp_number", form.phone);
+    payUrl.searchParams.set("phone", form.phone);
+    payUrl.searchParams.set("profession", professionForPay);
+    payUrl.searchParams.set("reason", form.reason);
+    payUrl.searchParams.set("utm_source", utms.utm_source);
+    payUrl.searchParams.set("utm_medium", utms.utm_medium);
+    payUrl.searchParams.set("utm_campaign", utms.utm_campaign);
+    payUrl.searchParams.set("utm_content", utms.utm_content);
+    payUrl.searchParams.set("utm_term", utms.utm_term);
+    payUrl.searchParams.set("fclid", utms.fclid);
+    payUrl.searchParams.set("gclid", utms.gclid);
+    payUrl.searchParams.set("fbclid", utms.fbclid);
 
-    const payUrl =
-      `${RAZORPAY_PAGE_URL}` +
-      `?name=${encodeURIComponent(form.name)}` +
-      `&email=${encodeURIComponent(form.email)}` +
-      `&whatsapp_number=${encodeURIComponent(form.phone)}` +
-      `&profession=${encodeURIComponent(professionForPay)}` + // ✅ FIXED
-      `&reason=${encodeURIComponent(form.reason)}` +
-      `&utm_source=${encodeURIComponent(utms.utm_source)}` +
-      `&utm_medium=${encodeURIComponent(utms.utm_medium)}` +
-      `&utm_campaign=${encodeURIComponent(utms.utm_campaign)}` +
-      `&utm_content=${encodeURIComponent(utms.utm_content)}` +
-      `&utm_term=${encodeURIComponent(utms.utm_term)}` +
-      `&fclid=${encodeURIComponent(utms.fclid)}`;
-
-    window.location.href = payUrl;
+    window.location.href = payUrl.toString();
   };
 
   return (
@@ -312,6 +324,8 @@ useEffect(() => {
           <form onSubmit={onSubmit} className="space-y-4">
             <input
               required
+              name="name"
+              id="name"
               placeholder="Full Name"
               className="w-full h-12 rounded-xl border px-4"
               value={form.name}
@@ -321,6 +335,8 @@ useEffect(() => {
             <input
               required
               type="email"
+              name="email"
+              id="email"
               placeholder="Email Address"
               className="w-full h-12 rounded-xl border px-4"
               value={form.email}
@@ -329,6 +345,9 @@ useEffect(() => {
 
             <input
               required
+              type="tel"
+              name="phone"
+              id="phone"
               placeholder="Phone Number"
               inputMode="numeric"
               className="w-full h-12 rounded-xl border px-4"
@@ -343,6 +362,8 @@ useEffect(() => {
 
             <select
               required
+              name="profession"
+              id="profession"
               className="w-full h-12 rounded-xl border px-4 bg-white"
               value={form.profession}
               onChange={(e) => setForm({ ...form, profession: e.target.value })}
@@ -360,6 +381,8 @@ useEffect(() => {
             {/* ✅ NEW QUESTION */}
             <select
               required
+              name="reason"
+              id="reason"
               className="w-full h-12 rounded-xl border px-4 bg-white"
               value={form.reason}
               onChange={(e) => setForm({ ...form, reason: e.target.value })}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import offerImg from "@/assets/coach.png";
 import { useFacebookPixel } from "@/hooks/useFacebookPixelHome";
+import { trackLead } from "@/lib/truelens";
 
 /** ✅ Webhook */
 const WEBHOOK_URL = "https://offbeatn8n.coachswastik.com/webhook/er-fb4";
@@ -25,6 +26,8 @@ function getUTMs() {
       utm_content: "",
       utm_term: "",
       fclid: "",
+      gclid: "",
+      fbclid: "",
     };
   }
 
@@ -36,6 +39,8 @@ function getUTMs() {
     utm_content: params.get("utm_content") || "",
     utm_term: params.get("utm_term") || "",
     fclid: params.get("fclid") || "",
+    gclid: params.get("gclid") || "",
+    fbclid: params.get("fbclid") || "",
   };
 
   const saved = localStorage.getItem(UTM_KEY);
@@ -106,6 +111,13 @@ useEffect(() => {
 
     const utms = getUTMs();
 
+    trackLead({
+      email: form.email,
+      phone: form.phone,
+      name: form.name,
+      profession: form.profession,
+    });
+
     try {
       await fetch(WEBHOOK_URL, {
         method: "POST",
@@ -131,7 +143,9 @@ useEffect(() => {
       `&utm_campaign=${encodeURIComponent(utms.utm_campaign)}` +
       `&utm_content=${encodeURIComponent(utms.utm_content)}` +
       `&utm_term=${encodeURIComponent(utms.utm_term)}` +
-      `&fclid=${encodeURIComponent(utms.fclid)}`;
+      `&fclid=${encodeURIComponent(utms.fclid)}` +
+      `&gclid=${encodeURIComponent(utms.gclid)}` +
+      `&fbclid=${encodeURIComponent(utms.fbclid)}`;
 
     window.location.href = payUrl;
   };
