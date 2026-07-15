@@ -45,7 +45,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<IndexGa5/>} />
+          {/* <Route path="/" element={<IndexGa5/>} /> */}
+          <Route path="/" element={<IndexOrg/>} /> 
 
 
 {/* Active Pages */}
