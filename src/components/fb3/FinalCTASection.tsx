@@ -35,9 +35,6 @@ export const FinalCTASection = () => {
             <div className="space-y-3">
               <div className="text-sm text-gray-400">Regular Price: ₹499</div>
               <div className="text-3xl md:text-4xl font-bold text-[#FDE68A]">Only ₹99</div>
-              <div className="text-xs md:text-sm text-gray-400">
-                30-Day Money-Back Guarantee
-              </div>
             </div>
 
             {/* ✅ CTA -> Scroll to form */}
@@ -77,7 +74,7 @@ export const FinalCTASection = () => {
           </a>
           &nbsp; |&nbsp;
           <a href="/refund" className="underline text-[#175B53]">
-            Refund Policy
+            Cancellation &amp; Refund Policy
           </a>
           &nbsp; |&nbsp;
           <a href="/shipping-policy" className="underline text-[#175B53]">

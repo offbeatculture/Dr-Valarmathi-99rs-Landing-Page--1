@@ -115,7 +115,7 @@ const NotFound = () => {
           </a>{" "}
           |{" "}
           <a href="/refund" className="underline text-[#175B53]">
-            Refund Policy
+            Cancellation &amp; Refund Policy
           </a>{" "}
           |{" "}
           <a href="/shipping-policy" className="underline text-[#175B53]">

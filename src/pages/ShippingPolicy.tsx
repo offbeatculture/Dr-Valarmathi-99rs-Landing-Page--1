@@ -21,8 +21,8 @@ export default function ShippingPolicy() {
         {/* 1. Delivery Method */}
         <h2 className="font-semibold text-xl mt-8 mb-3">1) Delivery Method</h2>
         <ul className="list-disc pl-6 space-y-2 text-[#312B24]/80">
-          <li>Download links sent to the email address provided during checkout.</li>
-          <li>Access to online courses, workshops, or resources via your account on our website.</li>
+          <li>Access to online courses, workshops, or resources via Zoom or our website.</li>
+          <li>Live sessions are delivered on Zoom; joining links are sent by email after payment.</li>
         </ul>
 
         {/* 2. Delivery Time */}
@@ -36,13 +36,13 @@ export default function ShippingPolicy() {
         <h2 className="font-semibold text-xl mt-8 mb-3">3) Access Issues</h2>
         <p className="text-[#312B24]/80 mb-2">
           If you face any of the following, reach out to us at{" "}
-          <a href="mailto:support@offbeatculture.co.in" className="underline text-[#175B53]">
-            support@offbeatculture.co.in
+          <a href="mailto:valar@protonsacademy.com" className="underline text-[#175B53]">
+            valar@protonsacademy.com
           </a>:
         </p>
         <ul className="list-disc pl-6 space-y-2 text-[#312B24]/80">
           <li>You did not receive the delivery email.</li>
-          <li>The download link is broken or expired.</li>
+          <li>The Zoom joining link is not working.</li>
           <li>You’re unable to access the product on our website.</li>
         </ul>
         <p className="text-[#312B24]/80 mt-2">
@@ -77,7 +77,7 @@ export default function ShippingPolicy() {
           © {new Date().getFullYear()} Offbeat Culture Private Limited •{" "}
           <a href="/privacy" className="underline text-[#175B53]">Privacy Policy</a> |{" "}
           <a href="/terms" className="underline text-[#175B53]">Terms</a> |{" "}
-          <a href="/refund-policy" className="underline text-[#175B53]">Refund Policy</a> |{" "}
+          <a href="/refund" className="underline text-[#175B53]">Cancellation &amp; Refund Policy</a> |{" "}
           <a href="/contact" className="underline text-[#175B53]">Contact Us</a>
         </p>
       </div>

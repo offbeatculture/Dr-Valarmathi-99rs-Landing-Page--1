@@ -2,14 +2,14 @@ import { useEffect } from "react";
 
 export default function RefundPolicy() {
   useEffect(() => {
-    document.title = "Refund Policy – Offbeat Culture Private Limited";
+    document.title = "Cancellation & Refund Policy – Offbeat Culture Private Limited";
   }, []);
 
   return (
     <section className="min-h-screen bg-[#F8F6E8] text-[#312B24] px-6 py-10">
       <div className="max-w-4xl mx-auto">
         <h1 className="font-lora text-3xl sm:text-4xl font-bold mb-6 text-[#0F2925]">
-          Refund Policy
+          Cancellation &amp; Refund Policy
         </h1>
 
         <p className="text-[#312B24]/80 mb-4">

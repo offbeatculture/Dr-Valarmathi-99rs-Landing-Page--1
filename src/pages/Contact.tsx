@@ -65,8 +65,8 @@ export default function Contact() {
             Terms
           </a>{" "}
           |{" "}
-          <a href="/refund-policy" className="underline text-[#175B53]">
-            Refund Policy
+          <a href="/refund" className="underline text-[#175B53]">
+            Cancellation &amp; Refund Policy
           </a>{" "}
           |{" "}
           <a href="/shipping-policy" className="underline text-[#175B53]">

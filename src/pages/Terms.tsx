@@ -14,12 +14,12 @@ export default function Terms() {
         </h1>
 
         <p className="mb-6 text-[#312B24]/80">
-          Welcome to <strong>Swastik Nandakumar</strong> or{" "}
+          Welcome to <strong>Dr. Valarrmathi Srinivasan</strong> or{" "}
           <a
-            href="https://swastiknandakumar.com"
+            href="https://er.valarmathisrinivasan.in"
             className="underline text-[#175B53]"
           >
-            swastiknandakumar.com
+            er.valarmathisrinivasan.in
           </a>{" "}
           (“Website”), the digital presence of{" "}
           <strong>Offbeat Culture Private Limited</strong> (“Website Owner”,
@@ -54,8 +54,8 @@ export default function Terms() {
 
         <h2 className="font-semibold text-xl mt-8 mb-3">Services</h2>
         <p className="text-[#312B24]/80">
-          We provide Free Webinars, Paid Webinars, Live Workshops, and Coaching
-          Programs to working professionals, business owners, and entrepreneurs.
+          We provide online meditation, mindfulness, and breathwork workshops,
+          bootcamps, and a monthly membership, all delivered live on Zoom.
           You agree to pay us the charges associated with availing of the
           Services as displayed or communicated during checkout or enrollment.
         </p>
@@ -138,7 +138,7 @@ export default function Terms() {
           If you have any questions about these Terms, please contact us at:
           <br />
           <a
-            href="mailto:support@offbeatculture.co.in"
+            href="mailto:valar@protonsacademy.com"
             className="underline text-[#175B53]"
           >
             valar@protonsacademy.com
@@ -158,8 +158,8 @@ export default function Terms() {
             Terms
           </a>{" "}
           |{" "}
-          <a href="/refund-policy" className="underline text-[#175B53]">
-            Refund Policy
+          <a href="/refund" className="underline text-[#175B53]">
+            Cancellation &amp; Refund Policy
           </a>{" "}
           |{" "}
           <a href="/shipping-policy" className="underline text-[#175B53]">

@@ -14,23 +14,14 @@ export const Privacy = () => {
         </h1>
 
         <p className="mb-6 text-[#312B24]/80">
-          This Privacy Policy describes how <strong>Offbeat Culture Private Limited</strong> (“we”, “our”, or “us”) collects, uses, and protects the personal information you provide while using our website <a href="https://swastiknandakumar.com" className="underline text-[#175B53]">https://swastiknandakumar.com</a>.
+          This Privacy Policy describes how <strong>Offbeat Culture Private Limited</strong> (“we”, “our”, or “us”) collects, uses, and protects the personal information you provide while using our website <a href="https://er.valarmathisrinivasan.in" className="underline text-[#175B53]">https://er.valarmathisrinivasan.in</a>.
         </p>
 
         <h2 className="font-semibold text-xl mt-8 mb-3">Who We Are</h2>
         <p className="text-[#312B24]/80">
-          We are <strong>Offbeat Culture Private Limited</strong>, a wellness and education company offering transformational programs, courses, and events. Our website address is <a href="https://swastiknandakumar.com" className="underline text-[#175B53]">https://swastiknandakumar.com</a>.
+          We are <strong>Offbeat Culture Private Limited</strong>, a wellness and education company offering transformational programs, courses, and events. Our website address is <a href="https://er.valarmathisrinivasan.in" className="underline text-[#175B53]">https://er.valarmathisrinivasan.in</a>.
         </p>
 
-        <h2 className="font-semibold text-xl mt-8 mb-3">Comments</h2>
-        <p className="text-[#312B24]/80">
-          When visitors leave comments on the site, we collect the data shown in the comments form, along with the visitor’s IP address and browser user agent string to help with spam detection.
-        </p>
-
-        <h2 className="font-semibold text-xl mt-8 mb-3">Media</h2>
-        <p className="text-[#312B24]/80">
-          If you upload images to the website, please avoid uploading images that include embedded location data (EXIF GPS). Visitors to the site can download and extract location data from images on the website.
-        </p>
 
         <h2 className="font-semibold text-xl mt-8 mb-3">Cookies</h2>
         <p className="text-[#312B24]/80 mb-4">
@@ -85,7 +76,7 @@ export const Privacy = () => {
         <p className="text-sm text-[#312B24]/60 mt-10 border-t border-[#E9E4D6] pt-6">
           © {new Date().getFullYear()} Offbeat Culture Private Limited | All Rights Reserved <br />
           <a href="/terms" className="underline text-[#175B53]">Terms</a> |{" "}
-          <a href="/refund-policy" className="underline text-[#175B53]">Refund Policy</a> |{" "}
+          <a href="/refund" className="underline text-[#175B53]">Cancellation &amp; Refund Policy</a> |{" "}
           <a href="/shipping-policy" className="underline text-[#175B53]">Shipping Policy</a> |{" "}
           <a href="/contact" className="underline text-[#175B53]">Contact Us</a>
         </p>

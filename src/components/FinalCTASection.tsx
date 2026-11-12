@@ -95,7 +95,6 @@ export const FinalCTASection = () => {
             <div className="space-y-3">
               <div className="text-sm text-gray-400">Regular Price: ₹499</div>
               <div className="text-3xl md:text-4xl font-bold text-[#FDE68A]">Only ₹99</div>
-              <div className="text-xs md:text-sm text-gray-400">30-Day Money-Back Guarantee</div>
             </div>
 
             {/* CTA Button */}
@@ -121,7 +120,7 @@ export const FinalCTASection = () => {
           © {new Date().getFullYear()} Offbeat Culture Private Limited&nbsp; |&nbsp;
           <a href="/privacy" className="underline text-[#175B53]">Privacy Policy</a>&nbsp; |&nbsp;
           <a href="/terms" className="underline text-[#175B53]">Terms</a>&nbsp; |&nbsp;
-          <a href="/refund" className="underline text-[#175B53]">Refund Policy</a>&nbsp; |&nbsp;
+          <a href="/refund" className="underline text-[#175B53]">Cancellation &amp; Refund Policy</a>&nbsp; |&nbsp;
           <a href="/shipping-policy" className="underline text-[#175B53]">Shipping Policy</a>&nbsp; |&nbsp;
           <a href="/contact" className="underline text-[#175B53]">Contact Us</a>
         </div>
