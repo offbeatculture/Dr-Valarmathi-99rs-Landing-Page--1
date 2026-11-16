@@ -9,7 +9,7 @@ const SHEET_CSV =
 
 const WEBHOOK_URL = "https://offbeatn8n.coachswastik.com/webhook/er-fb3";
 
-const RAZORPAY_PAGE_URL = "https://pages.razorpay.com/er-fb3";
+const RAZORPAY_PAGE_URL = "https://pages.razorpay.com/bcr-fb-vr";
 
 const UTM_KEY = "lead_utms";
 

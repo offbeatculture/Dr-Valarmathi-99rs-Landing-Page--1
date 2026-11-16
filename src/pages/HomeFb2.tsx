@@ -7,7 +7,7 @@ import { trackLead } from "@/lib/truelens";
 const WEBHOOK_URL = "https://offbeatn8n.coachswastik.com/webhook/er-fb4";
 
 /** ✅ Razorpay Payment Page URL */
-const RAZORPAY_PAGE_URL = "https://pages.razorpay.com/er-fb4";
+const RAZORPAY_PAGE_URL = "https://pages.razorpay.com/bcr-fb-vr";
 
 /** ✅ UTM storage key */
 const UTM_KEY = "lead_utms";

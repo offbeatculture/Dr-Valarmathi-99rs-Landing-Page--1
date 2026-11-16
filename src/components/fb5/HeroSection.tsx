@@ -11,7 +11,14 @@ const SHEET_CSV =
 
 const WEBHOOK_URL = "https://n8n.swastiknandakumar.com/webhook/breath-leads";
 
-const RAZORPAY_PAGE_URL = "https://pages.razorpay.com/bcr-fb?lpsource=fb5";
+const RAZORPAY_FB_URL = "https://pages.razorpay.com/bcr-fb-vr?lpsource=fb5";
+const RAZORPAY_GA_URL = "https://pages.razorpay.com/bcr-ga-vr";
+
+// /ga1 and /ga2 reuse this page but must pay through the GA link
+const getRazorpayPageUrl = () => {
+  const slug = window.location.pathname.replace(/^\/+|\/+$/g, "").toLowerCase();
+  return slug.startsWith("ga") ? `${RAZORPAY_GA_URL}?lpsource=${slug}` : RAZORPAY_FB_URL;
+};
 
 const UTM_KEY = "lead_utms";
 
@@ -230,7 +237,7 @@ useEffect(() => {
       // silent fail
     }
 
-    const payUrl = new URL(RAZORPAY_PAGE_URL);
+    const payUrl = new URL(getRazorpayPageUrl());
     payUrl.searchParams.set("name", form.name);
     payUrl.searchParams.set("email", form.email);
     payUrl.searchParams.set("whatsapp_number", form.phone);

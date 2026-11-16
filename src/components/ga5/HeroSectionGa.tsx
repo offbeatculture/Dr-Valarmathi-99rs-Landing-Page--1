@@ -10,7 +10,7 @@ const SHEET_CSV =
 // const WEBHOOK_URL = "https://offbeatn8n.coachswastik.com/webhook/breath-leads-ga";
 const WEBHOOK_URL = "https://n8n.swastiknandakumar.com/webhook/breath-leads-ga";
 
-const RAZORPAY_PAGE_URL = "https://pages.razorpay.com/bcr-ga?lpsource=ga5";
+const RAZORPAY_PAGE_URL = "https://pages.razorpay.com/bcr-ga-vr?lpsource=ga5";
 
 const UTM_KEY = "lead_utms";
 
